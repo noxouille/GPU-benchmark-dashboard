@@ -113,6 +113,17 @@ var config = {
 			legend: {
 				position: 'right',
 			},
+			tooltips: {
+				// 'point' for single data point, 
+				// 'index' for all data points in a group,
+				// 'nearest' for single data point nearby.
+			    mode: 'nearest', 
+			    intersect: false
+			},
+			hover: {
+			    mode: 'index',
+			    intersect: false
+			},
 			title: {
 				display: true,
 				fontSize:20,
