@@ -8,34 +8,27 @@ var colorSet = {
 	grey: 'rgb(201, 203, 207)'
 };
 
-var colorSet2 = {
-	color1: 'rgb(183, 82, 82)',
-  color2: 'rgb(136, 14, 79)',
-  color3: 'rgb(74, 20, 140)',
-  color4: 'rgb(49, 27, 146)',
-  color5: 'rgb(26, 35, 126)',
-  color6: 'rgb(13, 71, 161)',
-  color7: 'rgb(1, 87, 155)',
-  color8: 'rgb(0, 96, 100)',
-  color9: 'rgb(0, 77, 64)',
-  color10: 'rgb(27, 94, 32)',
-  color11: 'rgb(51, 105, 30)',
-  color12: 'rgb(130, 119, 23)',
-  color13: 'rgb(245, 127, 23)',
-  color14: 'rgb(255, 111, 0)',
-  color15: 'rgb(230, 81, 0)',
-  color16: 'rgb(191, 54, 12)',
-  color17: 'rgb(62, 39, 35)',
-  color18: 'rgb(33, 33, 33)',
-  color19: 'rgb(38, 50, 56)'
-}
-
 var rnd100 = function(){
 	return Math.round(Math.random() * 100);
 };
 
 // Put your data here
 var GPU = ['GV100', 'P5000'];
+
+var pytorch040 = {
+	'fp32': { 'GV100': 573, 'P5000': 291 },
+  'fp16': { 'GV100': 1221, 'P5000': 336 }
+};
+
+var tf180 = {
+	'fp32': { 'GV100': 565, 'P5000': 284 },
+  'fp16': { 'GV100': 1095, 'P5000': 307 }
+};
+
+var caffe2081 = {
+	'fp32': { 'GV100': 324, 'P5000': 238 },
+  'fp16': { 'GV100': 459, 'P5000': 276 }
+};
 
 var randomColor = function(){
 	var rgb = [];
@@ -52,48 +45,48 @@ var horizontalBarChartData = {
 		backgroundColor: color(colorSet.red).alpha(0.2).rgbString(),
 		borderColor: colorSet.red,
 		data: [
-			Math.floor(573.4767025),
-			Math.floor(291.43898)
+			pytorch040["fp32"]["GV100"],
+			pytorch040["fp32"]["P5000"]
 		]
 	}, {
 		label: 'PyTorch 0.4.0 fp16',
 		backgroundColor: color(colorSet.orange).alpha(0.2).rgbString(),
 		borderColor: colorSet.orange,
 		data: [
-			Math.floor(1221.374046),
-			Math.floor(336.8421053)
+			pytorch040["fp16"]["GV100"],
+			pytorch040["fp16"]["P5000"]
 		]
 	}, {
 		label: 'TensorFlow 1.8.0 fp32',
 		backgroundColor: color(colorSet.yellow).alpha(0.2).rgbString(),
 		borderColor: colorSet.yellow,
 		data: [
-			Math.floor(565.3710247),
-			Math.floor(284.1918295)
+			tf180["fp32"]["GV100"],
+			tf180["fp32"]["P5000"]
 		]
 	}, {
 		label: 'TensorFlow 1.8.0 fp16',
 		backgroundColor: color(colorSet.green).alpha(0.2).rgbString(),
 		borderColor: colorSet.green,
 		data: [
-			Math.floor(1095.890411),
-			Math.floor(307.1017274)
+			tf180["fp16"]["GV100"],
+			tf180["fp16"]["P5000"]
 		]
 	}, {
 		label: 'Caffe2 0.8.1 fp32',
 		backgroundColor: color(colorSet.blue).alpha(0.2).rgbString(),
 		borderColor: colorSet.blue,
 		data: [
-			Math.floor(324.5436105),
-			Math.floor(238.4500745)
+			caffe2081["fp32"]["GV100"],
+			caffe2081["fp32"]["P5000"]
 		]
 	}, {
 		label: 'Caffe2 0.8.1 fp16',
 		backgroundColor: color(colorSet.purple).alpha(0.2).rgbString(),
 		borderColor: colorSet.purple,
 		data: [
-			Math.floor(459.7701149),
-			Math.floor(276.816609)
+			caffe2081["fp16"]["GV100"],
+			caffe2081["fp16"]["P5000"]
 		]
 	}]
 };
@@ -114,10 +107,10 @@ var config = {
 				position: 'right',
 			},
 			tooltips: {
-				// 'point' for single data point, 
+				// 'point' for single data point,
 				// 'index' for all data points in a group,
 				// 'nearest' for single data point nearby.
-			    mode: 'nearest', 
+			    mode: 'nearest',
 			    intersect: false
 			},
 			hover: {
