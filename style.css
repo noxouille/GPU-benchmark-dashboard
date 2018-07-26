@@ -4,8 +4,12 @@ body {
 }
 
 .wrapper {
-  max-width: 800px;
-  margin: 50px auto;
+  max-width: 1000px;
+}
+
+.section {
+  text-align:center;
+  font-size: 3em;
 }
 
 h1 {
