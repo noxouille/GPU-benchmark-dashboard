@@ -9,20 +9,35 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+  <div id="navbar">
+    <div class="container">
+		<a href="#page1" class="btn-two green small">Page 1</a>
+		<a href="#page2" class="btn-two blue small">Page 2</a>
+		<a href="#page2/slide2-1" class="btn-two red small">Slide 2-1</a>
+		<a href="#page2/slide2-2" class="btn-two purple small">Slide 2-2</a>
+		<a href="#page3" class="btn-two cyan small">Page 3</a>
+		<a href="#page1" class="btn-two yellow small">Page 4</a>
+	</div>
+  </div>
   <div id="fullpage">
-    <div class="section">
+    <div class="section" data-anchor="page1">
       <div class="wrapper">
         <canvas id="myChart"></canvas>
-        <button id="randomizeData">Randomize Data</button>
+    		<a href="#" class="btn-gradient green mini">GV100</a>
+    		<a href="#" class="btn-gradient blue mini">P5000</a>
+    		<a href="#" class="btn-gradient red mini">Reset</a>
+        <!--button id="randomizeData">Randomize Data</button>
         <button id="addDataset">Add Dataset</button>
         <button id="removeDataset">Remove Dataset</button>
         <button id="addData">Add Data</button>
-        <button id="removeData">Remove Data</button>
+        <button id="removeData">Remove Data</button-->
       </div>
     </div>
-    <div class="section">Section 2
+    <div class="section" data-anchor="page2">
+      <div class="slide" data-anchor="slide2-1">Section 2 Slide2-1</div>
+      <div class="slide" data-anchor="slide2-2">Section 2 Slide2-2</div>
     </div>
-    <div class="section">Section 3
+    <div class="section" data-anchor="page3">Section 3
     </div>
   </div>
 
