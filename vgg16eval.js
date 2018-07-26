@@ -42,7 +42,7 @@ var horizontalBarChartData = {
 	labels: GPU,
 	datasets: [{
 		label: 'PyTorch 0.4.0 fp32',
-		backgroundColor: color(colorSet.red).alpha(0.2).rgbString(),
+		backgroundColor: color(colorSet.red).alpha(0.8).rgbString(),
 		borderColor: colorSet.red,
 		data: [
 			pytorch040["fp32"]["GV100"],
@@ -50,7 +50,7 @@ var horizontalBarChartData = {
 		]
 	}, {
 		label: 'PyTorch 0.4.0 fp16',
-		backgroundColor: color(colorSet.orange).alpha(0.2).rgbString(),
+		backgroundColor: color(colorSet.orange).alpha(0.8).rgbString(),
 		borderColor: colorSet.orange,
 		data: [
 			pytorch040["fp16"]["GV100"],
@@ -58,7 +58,7 @@ var horizontalBarChartData = {
 		]
 	}, {
 		label: 'TensorFlow 1.8.0 fp32',
-		backgroundColor: color(colorSet.yellow).alpha(0.2).rgbString(),
+		backgroundColor: color(colorSet.yellow).alpha(0.8).rgbString(),
 		borderColor: colorSet.yellow,
 		data: [
 			tf180["fp32"]["GV100"],
@@ -66,7 +66,7 @@ var horizontalBarChartData = {
 		]
 	}, {
 		label: 'TensorFlow 1.8.0 fp16',
-		backgroundColor: color(colorSet.green).alpha(0.2).rgbString(),
+		backgroundColor: color(colorSet.green).alpha(0.8).rgbString(),
 		borderColor: colorSet.green,
 		data: [
 			tf180["fp16"]["GV100"],
@@ -74,7 +74,7 @@ var horizontalBarChartData = {
 		]
 	}, {
 		label: 'Caffe2 0.8.1 fp32',
-		backgroundColor: color(colorSet.blue).alpha(0.2).rgbString(),
+		backgroundColor: color(colorSet.blue).alpha(0.8).rgbString(),
 		borderColor: colorSet.blue,
 		data: [
 			caffe2081["fp32"]["GV100"],
@@ -82,7 +82,7 @@ var horizontalBarChartData = {
 		]
 	}, {
 		label: 'Caffe2 0.8.1 fp16',
-		backgroundColor: color(colorSet.purple).alpha(0.2).rgbString(),
+		backgroundColor: color(colorSet.purple).alpha(0.8).rgbString(),
 		borderColor: colorSet.purple,
 		data: [
 			caffe2081["fp16"]["GV100"],
