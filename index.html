@@ -20,26 +20,30 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<header id="luxbar" class="luxbar-fixed">
-  <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox" />
-  <div class="luxbar-menu luxbar-menu-right luxbar-menu-material-cyan">
-    <ul class="luxbar-navigation">
-      <li class="luxbar-header">
-        <a href="#" class="luxbar-brand">GPU Benchmark</a>
-        <label class="luxbar-hamburger luxbar-hamburger-doublespin" id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
-      </li>
-      <li class="luxbar-item"><a href="#">vgg16eval</a></li>
-      <li class="luxbar-item"><a href="#">vgg16train</a></li>
-      <li class="luxbar-item"><a href="#">resnet152eval</a></li>
-      <li class="luxbar-item"><a href="#">resnet152train</a></li>
-    </ul>
-  </div>
-</header>
+
 
 <body>
+
+  <div class="header-container">
+    <header id="luxbar" class="luxbar-fixed">
+      <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox" />
+      <div class="luxbar-menu luxbar-menu-right luxbar-menu-material-cyan">
+        <ul class="luxbar-navigation">
+          <li class="luxbar-header">
+            <a href="#" class="luxbar-brand">GPU Benchmark</a>
+            <label class="luxbar-hamburger luxbar-hamburger-doublespin" id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
+          </li>
+          <li class="luxbar-item"><a href="#">vgg16eval</a></li>
+          <li class="luxbar-item"><a href="#">vgg16train</a></li>
+          <li class="luxbar-item"><a href="#">resnet152eval</a></li>
+          <li class="luxbar-item"><a href="#">resnet152train</a></li>
+        </ul>
+      </div>
+    </header>
+  </div>
   <div class="container-fluid">
-    <div class="row row-space">
-      <div class="col-lg-7 chart-wrapper">
+    <div class="row">
+      <div class="col-lg-6 chart-wrapper">
         <canvas id="myChart"></canvas>
         <button class="btn btn-green btn-fill-vert-o">GV100</button>
         <button class="btn btn-blue btn-fill-vert-o">P5000</button>
@@ -48,7 +52,7 @@
     <button class="btn btn-orange btn-fill-vert-o">Carrot</button>
     <button class="btn btn-red btn-fill-vert-o">Alizarin</button-->
       </div>
-      <div class="col-lg-4 Container">
+      <div class="col-lg-6 Container">
         <nav>
           <div class="current"></div>
           <a href="#one" class="active">Source</a>
@@ -56,26 +60,92 @@
         </nav>
         <div class="Contents">
           <div class="Content" id="one">
-            <pre><code>require "stripe"
-Stripe.api_key = "..."
+            <pre><code>
+=============
+== PyTorch ==
+=============
 
-Stripe::Charge.create(
-  :amount => 2000,
-  :currency => "eur",
-  :source => "tok_mastercard", # obtained with Stripe.js
-  :description => "Charge for hello@thomascullen.io"
-)</code></pre>
+NVIDIA Release 18.06 (build 497677)
+
+Container image Copyright (c) 2018, NVIDIA CORPORATION.  All rights reserved.
+
+Copyright (c) 2016-     Facebook, Inc            (Adam Paszke)
+Copyright (c) 2014-     Facebook, Inc            (Soumith Chintala)
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION.  All rights reserved.
+NVIDIA modifications are covered by the license terms that apply to the underlying project or file.
+
+running benchmark for framework pytorch
+cuda version= 9.0.176
+cudnn version= 7104
+/home/frameworks/pytorch/models.py:17: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  self.eval_input = torch.autograd.Variable(x, volatile=True).cuda() if precision == 'fp32' \
+pytorch's vgg16 eval at fp32: 27.9ms avg
+pytorch's vgg16 train at fp32: 94.3ms avg
+pytorch's resnet152 eval at fp32: 43.8ms avg
+pytorch's resnet152 train at fp32: 160.8ms avg
+pytorch's densenet161 eval at fp32: 49.0ms avg
+pytorch's densenet161 train at fp32: 165.1ms avg
+/home/frameworks/pytorch/models.py:18: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  else torch.autograd.Variable(x, volatile=True).cuda().half()
+pytorch's vgg16 eval at fp16: 13.1ms avg
+pytorch's vgg16 train at fp16: 66.9ms avg
+pytorch's resnet152 eval at fp16: 23.4ms avg
+pytorch's resnet152 train at fp16: 104.6ms avg
+pytorch's densenet161 eval at fp16: 29.6ms avg
+pytorch's densenet161 train at fp16: 115.6ms avg</code></pre>
           </div>
           <div class="Content" id="two">
-            <pre class="python"><code>import stripe
-stripe.api_key = "..."
+            <pre class="python"><code>
+=============
+== PyTorch ==
+=============
 
-stripe.Charge.create(
-  amount=2000,
-  currency="eur",
-  source="tok_amex", # obtained with Stripe.js
-  description="Charge for madison.wilson@example.com"
-)</pre></code>
+NVIDIA Release 18.06 (build 497677)
+
+Container image Copyright (c) 2018, NVIDIA CORPORATION.  All rights reserved.
+
+Copyright (c) 2016-     Facebook, Inc            (Adam Paszke)
+Copyright (c) 2014-     Facebook, Inc            (Soumith Chintala)
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION.  All rights reserved.
+NVIDIA modifications are covered by the license terms that apply to the underlying project or file.
+
+running benchmark for framework pytorch
+cuda version= 9.0.176
+cudnn version= 7104
+/home/frameworks/pytorch/models.py:17: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  self.eval_input = torch.autograd.Variable(x, volatile=True).cuda() if precision == 'fp32' \
+pytorch's vgg16 eval at fp32: 54.9ms avg
+pytorch's vgg16 train at fp32: 177.9ms avg
+pytorch's resnet152 eval at fp32: 85.1ms avg
+pytorch's resnet152 train at fp32: 292.0ms avg
+pytorch's densenet161 eval at fp32: 85.4ms avg
+pytorch's densenet161 train at fp32: 296.8ms avg
+/home/frameworks/pytorch/models.py:18: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  else torch.autograd.Variable(x, volatile=True).cuda().half()
+pytorch's vgg16 eval at fp16: 47.5ms avg
+pytorch's vgg16 train at fp16: 157.1ms avg
+pytorch's resnet152 eval at fp16: 70.3ms avg
+pytorch's resnet152 train at fp16: 266.7ms avg
+pytorch's densenet161 eval at fp16: 69.4ms avg
+pytorch's densenet161 train at fp16: 267.3ms avg</pre></code>
           </div>
         </div>
       </div>
