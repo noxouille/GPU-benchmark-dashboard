@@ -2,6 +2,8 @@
   transition: all 0.3s;
 }
 
+.header-container{margin:0 auto;width:70%;height:60px;}
+
 body, html {
   background: #F3F5FF;
   font-family: 'Roboto', sans-serif;
@@ -12,16 +14,18 @@ body, html {
 }
 
 .container-fluid{
-  max-width: 900vw;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0px 30px 30px 30px;
 }
 
 .chart-wrapper {
-  width: 80%;
-  margin: 80px auto;
+  width: 100%;
+  margin: 0 auto 30px auto;
 }
 
 .Container {
-  width: 100%;
+  width: 800px;
   border-radius: 6px;
   position: relative;
   background: #282B36;
@@ -50,7 +54,7 @@ body, html {
   left: 0;
   z-index: 0;
   width: 40px;
-  height: 22px;
+  height: 26px;
   border-radius: 3px;
   position: absolute;
   background-color: rgba(255, 255, 255, 0.2);
