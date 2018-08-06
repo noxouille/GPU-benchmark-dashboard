@@ -93,42 +93,105 @@ var horizontalBarChartData = {
 
 var config = {
   type: 'horizontalBar',
-    data: horizontalBarChartData,
-		options: {
-			// Elements options apply to all of the options unless overridden in a dataset
-			// In this case, we are setting the border of each horizontal bar to be 2px wide
-			elements: {
-				rectangle: {
-					borderWidth: 2,
-				}
-			},
-			responsive: true,
-			legend: {
-				position: 'right',
-			},
-			tooltips: {
-				// 'point' for single data point,
-				// 'index' for all data points in a group,
-				// 'nearest' for single data point nearby.
-			    mode: 'nearest',
-			    intersect: false
-			},
-			hover: {
-			    mode: 'index',
-			    intersect: false
-			},
-			title: {
-				display: true,
-				fontSize:20,
-				fontColor:'#666',
-				text: 'vgg16 eval (images per sec)'
+  data: horizontalBarChartData,
+	options: {
+		// Elements options apply to all of the options unless overridden in a dataset
+		// In this case, we are setting the border of each horizontal bar to be 2px wide
+		elements: {
+			rectangle: {
+				borderWidth: 2,
 			}
+		},
+		responsive: true,
+		legend: {
+			position: 'right',
+		},
+		tooltips: {
+			// 'point' for single data point,
+			// 'index' for all data points in a group,
+			// 'nearest' for single data point nearby.
+		    mode: 'nearest',
+		    intersect: false
+		},
+		hover: {
+		    mode: 'index',
+		    intersect: false
+		},
+		title: {
+			display: true,
+			fontSize:20,
+			fontColor:'#666',
+			text: 'vgg16 eval (images per sec)'
 		}
+	}
 };
 
 var myChart = new Chart($("#myChart"), config);
 
+var GV100visible = true;
+var P5000visible = true;
 
+$("#showOnlyGV100").click(function(){
+	if (P5000visible === true) { // remove P5000 graph
+		config.data.labels.pop();
+		config.data.datasets.forEach(function(dataset){
+			dataset.data.pop();
+		});
+		P5000visible = !P5000visible;
+	}
+	if (GV100visible === false)	{ // show gv100 graph
+		config.data.labels[0] = "GV100";
+		config.data.datasets[0].data[0] = pytorch040["fp32"]["GV100"];
+		config.data.datasets[1].data[0] = pytorch040["fp16"]["GV100"];
+		config.data.datasets[2].data[0] = tf180["fp32"]["GV100"];
+		config.data.datasets[3].data[0] = tf180["fp16"]["GV100"];
+		config.data.datasets[4].data[0] = caffe2081["fp32"]["GV100"];
+		config.data.datasets[5].data[0] = caffe2081["fp16"]["GV100"];
+		GV100visible = !GV100visible;
+	}
+	myChart.update();
+});
+
+$("#showOnlyP5000").click(function(){
+	if (GV100visible === true) { // remove gv100 graph
+		config.data.labels.splice(0, 1);
+		config.data.datasets.forEach(function(dataset){
+			dataset.data.splice(0, 1);
+		});
+		GV100visible = !GV100visible;
+	}
+	if (P5000visible === false) { // show P5000 graph
+		config.data.labels[0] = "P5000";
+		config.data.datasets[0].data[0] = pytorch040["fp32"]["P5000"];
+		config.data.datasets[1].data[0] = pytorch040["fp16"]["P5000"];
+		config.data.datasets[2].data[0] = tf180["fp32"]["P5000"];
+		config.data.datasets[3].data[0] = tf180["fp16"]["P5000"];
+		config.data.datasets[4].data[0] = caffe2081["fp32"]["P5000"];
+		config.data.datasets[5].data[0] = caffe2081["fp16"]["P5000"];
+		P5000visible = !P5000visible;
+	}
+	myChart.update();
+});
+
+$("#resetGraph").click(function(){
+	// TODO: Can we make this more efficient? especially for more datasets
+	config.data.datasets[0].data[0] = pytorch040["fp32"]["GV100"];
+	config.data.datasets[1].data[0] = pytorch040["fp16"]["GV100"];
+	config.data.datasets[2].data[0] = tf180["fp32"]["GV100"];
+	config.data.datasets[3].data[0] = tf180["fp16"]["GV100"];
+	config.data.datasets[4].data[0] = caffe2081["fp32"]["GV100"];
+	config.data.datasets[5].data[0] = caffe2081["fp16"]["GV100"];
+	config.data.labels[1] = "P5000";
+	config.data.datasets[0].data[1] = pytorch040["fp32"]["P5000"];
+	config.data.datasets[1].data[1] = pytorch040["fp16"]["P5000"];
+	config.data.datasets[2].data[1] = tf180["fp32"]["P5000"];
+	config.data.datasets[3].data[1] = tf180["fp16"]["P5000"];
+	config.data.datasets[4].data[1] = caffe2081["fp32"]["P5000"];
+	config.data.datasets[5].data[1] = caffe2081["fp16"]["P5000"];
+	GV100visible = true;
+	P5000visible = true;
+	myChart.update();
+});
 
 /*
  * #randomizeData
