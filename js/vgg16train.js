@@ -15,7 +15,7 @@ var rnd100 = function(){
 // Put your data here
 var GPU = ['GV100', 'P5000'];
 
-var pytorch040 = {
+var pytorch040_train = {
 	'fp32': { 'GV100': 169, 'P5000': 89 },
   'fp16': { 'GV100': 239, 'P5000': 101 }
 };
@@ -45,16 +45,16 @@ var data_train = {
 		backgroundColor: color(colorSet.red).alpha(0.8).rgbString(),
 		borderColor: colorSet.red,
 		data: [
-			pytorch040["fp32"]["GV100"],
-			pytorch040["fp32"]["P5000"]
+			pytorch040_train["fp32"]["GV100"],
+			pytorch040_train["fp32"]["P5000"]
 		]
 	}, {
 		label: 'PyTorch 0.4.0 fp16',
 		backgroundColor: color(colorSet.orange).alpha(0.8).rgbString(),
 		borderColor: colorSet.orange,
 		data: [
-			pytorch040["fp16"]["GV100"],
-			pytorch040["fp16"]["P5000"]
+			pytorch040_train["fp16"]["GV100"],
+			pytorch040_train["fp16"]["P5000"]
 		]
 	}, {
 		label: 'TensorFlow 1.8.0 fp32',
@@ -141,8 +141,8 @@ $("#showOnlyGV100_train").click(function(){
 	}
 	if (GV100visible_train === false)	{ // show gv100 graph
 		config_train.data.labels[0] = "GV100";
-		config_train.data.datasets[0].data[0] = pytorch040["fp32"]["GV100"];
-		config_train.data.datasets[1].data[0] = pytorch040["fp16"]["GV100"];
+		config_train.data.datasets[0].data[0] = pytorch040_train["fp32"]["GV100"];
+		config_train.data.datasets[1].data[0] = pytorch040_train["fp16"]["GV100"];
 		config_train.data.datasets[2].data[0] = tf180_train["fp32"]["GV100"];
 		config_train.data.datasets[3].data[0] = tf180_train["fp16"]["GV100"];
 		config_train.data.datasets[4].data[0] = caffe2081_train["fp32"]["GV100"];
@@ -162,8 +162,8 @@ $("#showOnlyP5000_train").click(function(){
 	}
 	if (P5000visible_train === false) { // show P5000 graph
 		config_train.data.labels[0] = "P5000";
-		config_train.data.datasets[0].data[0] = pytorch040["fp32"]["P5000"];
-		config_train.data.datasets[1].data[0] = pytorch040["fp16"]["P5000"];
+		config_train.data.datasets[0].data[0] = pytorch040_train["fp32"]["P5000"];
+		config_train.data.datasets[1].data[0] = pytorch040_train["fp16"]["P5000"];
 		config_train.data.datasets[2].data[0] = tf180_train["fp32"]["P5000"];
 		config_train.data.datasets[3].data[0] = tf180_train["fp16"]["P5000"];
 		config_train.data.datasets[4].data[0] = caffe2081_train["fp32"]["P5000"];
@@ -176,15 +176,15 @@ $("#showOnlyP5000_train").click(function(){
 $("#resetGraph_train").click(function(){
 	// TODO: Can we make this more efficient? especially for more datasets
 	config_train.data.labels[0] = "GV100";
-	config_train.data.datasets[0].data[0] = pytorch040["fp32"]["GV100"];
-	config_train.data.datasets[1].data[0] = pytorch040["fp16"]["GV100"];
+	config_train.data.datasets[0].data[0] = pytorch040_train["fp32"]["GV100"];
+	config_train.data.datasets[1].data[0] = pytorch040_train["fp16"]["GV100"];
 	config_train.data.datasets[2].data[0] = tf180_train["fp32"]["GV100"];
 	config_train.data.datasets[3].data[0] = tf180_train["fp16"]["GV100"];
 	config_train.data.datasets[4].data[0] = caffe2081_train["fp32"]["GV100"];
 	config_train.data.datasets[5].data[0] = caffe2081_train["fp16"]["GV100"];
 	config_train.data.labels[1] = "P5000";
-	config_train.data.datasets[0].data[1] = pytorch040["fp32"]["P5000"];
-	config_train.data.datasets[1].data[1] = pytorch040["fp16"]["P5000"];
+	config_train.data.datasets[0].data[1] = pytorch040_train["fp32"]["P5000"];
+	config_train.data.datasets[1].data[1] = pytorch040_train["fp16"]["P5000"];
 	config_train.data.datasets[2].data[1] = tf180_train["fp32"]["P5000"];
 	config_train.data.datasets[3].data[1] = tf180_train["fp16"]["P5000"];
 	config_train.data.datasets[4].data[1] = caffe2081_train["fp32"]["P5000"];
