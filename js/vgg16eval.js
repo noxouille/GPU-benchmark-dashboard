@@ -175,6 +175,7 @@ $("#showOnlyP5000").click(function(){
 
 $("#resetGraph").click(function(){
 	// TODO: Can we make this more efficient? especially for more datasets
+	config.data.labels[0] = "GV100";
 	config.data.datasets[0].data[0] = pytorch040["fp32"]["GV100"];
 	config.data.datasets[1].data[0] = pytorch040["fp16"]["GV100"];
 	config.data.datasets[2].data[0] = tf180["fp32"]["GV100"];
