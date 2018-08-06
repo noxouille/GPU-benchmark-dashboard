@@ -22,8 +22,8 @@
         <a href="#" class="luxbar-brand">GPUBenchmk</a>
         <label class="luxbar-hamburger luxbar-hamburger-spin" id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
       </li>
-      <li class="luxbar-item"><a href="#">vgg16eval</a></li>
-      <li class="luxbar-item"><a href="#">vgg16train</a></li>
+      <li class="luxbar-item"><a href="#" id="vgg16eval_show">vgg16eval</a></li>
+      <li class="luxbar-item"><a href="#" id="vgg16train_show">vgg16train</a></li>
       <li class="luxbar-item"><a href="#">resnet152eval</a></li>
       <li class="luxbar-item"><a href="#">resnet152train</a></li>
     </ul>
@@ -34,13 +34,21 @@
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="col-md-6">
-        <canvas id="myChart"></canvas>
-        <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100">GV100</button>
-        <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000">P5000</button>
-        <button class="btn btn-red btn-fill-vert-o" id="resetGraph">Reset</button>
-        <!--button class="btn btn-navy btn-fill-vert-o">Wet Asphalt</button>
-        <button class="btn btn-orange btn-fill-vert-o">Carrot</button>
-        <button class="btn btn-red btn-fill-vert-o">Alizarin</button-->
+        <div id="chartset_vgg16eval">
+          <canvas id="chart_vgg16eval"></canvas>
+          <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_eval">GV100</button>
+          <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_eval">P5000</button>
+          <button class="btn btn-red btn-fill-vert-o" id="resetGraph_eval">Reset</button>
+        </div>
+        <div id="chartset_vgg16train">
+          <canvas id="chart_vgg16train"></canvas>
+          <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_train">GV100</button>
+          <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_train">P5000</button>
+          <button class="btn btn-red btn-fill-vert-o" id="resetGraph_train">Reset</button>
+          <button class="btn btn-navy btn-fill-vert-o" id="newbutton">Wet Asphalt</button>
+        </div>
+        <!--button class="btn btn-orange btn-fill-vert-o">Carrot</button>
+        <button class="btn btn-purple btn-fill-vert-o">Alizarin</button-->
       </div>
       <div id="wrapper" class="col-md-6">
         <!-- Nav tabs -->
@@ -119,7 +127,19 @@
       <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
       <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
 
+      <script>
+      $( "#vgg16eval_show" ).click(function() {
+      $( "#chartset_vgg16eval" ).show();
+      $( "#chartset_vgg16train" ).hide();
+      });
+
+      $( "#vgg16train_show" ).click(function() {
+      $( "#chartset_vgg16eval" ).hide();
+      $( "#chartset_vgg16train" ).show();
+      });
+      </script>
       <script src="js/vgg16eval.js"></script>
+      <script src="js/vgg16train.js"></script>
       <script src="js/code-main.js"></script>
 </body>
 

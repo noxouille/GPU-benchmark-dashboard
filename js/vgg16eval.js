@@ -15,17 +15,17 @@ var rnd100 = function(){
 // Put your data here
 var GPU = ['GV100', 'P5000'];
 
-var pytorch040 = {
+var pytorch040_eval = {
 	'fp32': { 'GV100': 573, 'P5000': 291 },
   'fp16': { 'GV100': 1221, 'P5000': 336 }
 };
 
-var tf180 = {
+var tf180_eval = {
 	'fp32': { 'GV100': 565, 'P5000': 284 },
   'fp16': { 'GV100': 1095, 'P5000': 307 }
 };
 
-var caffe2081 = {
+var caffe2081_eval = {
 	'fp32': { 'GV100': 324, 'P5000': 238 },
   'fp16': { 'GV100': 459, 'P5000': 276 }
 };
@@ -38,62 +38,62 @@ var randomColor = function(){
 };
 
 var color = Chart.helpers.color;
-var horizontalBarChartData = {
+var data_eval = {
 	labels: GPU,
 	datasets: [{
 		label: 'PyTorch 0.4.0 fp32',
 		backgroundColor: color(colorSet.red).alpha(0.8).rgbString(),
 		borderColor: colorSet.red,
 		data: [
-			pytorch040["fp32"]["GV100"],
-			pytorch040["fp32"]["P5000"]
+			pytorch040_eval["fp32"]["GV100"],
+			pytorch040_eval["fp32"]["P5000"]
 		]
 	}, {
 		label: 'PyTorch 0.4.0 fp16',
 		backgroundColor: color(colorSet.orange).alpha(0.8).rgbString(),
 		borderColor: colorSet.orange,
 		data: [
-			pytorch040["fp16"]["GV100"],
-			pytorch040["fp16"]["P5000"]
+			pytorch040_eval["fp16"]["GV100"],
+			pytorch040_eval["fp16"]["P5000"]
 		]
 	}, {
 		label: 'TensorFlow 1.8.0 fp32',
 		backgroundColor: color(colorSet.yellow).alpha(0.8).rgbString(),
 		borderColor: colorSet.yellow,
 		data: [
-			tf180["fp32"]["GV100"],
-			tf180["fp32"]["P5000"]
+			tf180_eval["fp32"]["GV100"],
+			tf180_eval["fp32"]["P5000"]
 		]
 	}, {
 		label: 'TensorFlow 1.8.0 fp16',
 		backgroundColor: color(colorSet.green).alpha(0.8).rgbString(),
 		borderColor: colorSet.green,
 		data: [
-			tf180["fp16"]["GV100"],
-			tf180["fp16"]["P5000"]
+			tf180_eval["fp16"]["GV100"],
+			tf180_eval["fp16"]["P5000"]
 		]
 	}, {
 		label: 'Caffe2 0.8.1 fp32',
 		backgroundColor: color(colorSet.blue).alpha(0.8).rgbString(),
 		borderColor: colorSet.blue,
 		data: [
-			caffe2081["fp32"]["GV100"],
-			caffe2081["fp32"]["P5000"]
+			caffe2081_eval["fp32"]["GV100"],
+			caffe2081_eval["fp32"]["P5000"]
 		]
 	}, {
 		label: 'Caffe2 0.8.1 fp16',
 		backgroundColor: color(colorSet.purple).alpha(0.8).rgbString(),
 		borderColor: colorSet.purple,
 		data: [
-			caffe2081["fp16"]["GV100"],
-			caffe2081["fp16"]["P5000"]
+			caffe2081_eval["fp16"]["GV100"],
+			caffe2081_eval["fp16"]["P5000"]
 		]
 	}]
 };
 
-var config = {
+var config_eval = {
   type: 'horizontalBar',
-  data: horizontalBarChartData,
+  data: data_eval,
 	options: {
 		// Elements options apply to all of the options unless overridden in a dataset
 		// In this case, we are setting the border of each horizontal bar to be 2px wide
@@ -126,85 +126,85 @@ var config = {
 	}
 };
 
-var myChart = new Chart($("#myChart"), config);
+var chart_vgg16eval = new Chart($("#chart_vgg16eval"), config_eval);
 
-var GV100visible = true;
-var P5000visible = true;
+var GV100visible_eval = true;
+var P5000visible_eval = true;
 
-$("#showOnlyGV100").click(function(){
-	if (P5000visible === true) { // remove P5000 graph
-		config.data.labels.pop();
-		config.data.datasets.forEach(function(dataset){
+$("#showOnlyGV100_eval").click(function(){
+	if (P5000visible_eval === true) { // remove P5000 graph
+		config_eval.data.labels.pop();
+		config_eval.data.datasets.forEach(function(dataset){
 			dataset.data.pop();
 		});
-		P5000visible = !P5000visible;
+		P5000visible_eval = !P5000visible_eval;
 	}
-	if (GV100visible === false)	{ // show gv100 graph
-		config.data.labels[0] = "GV100";
-		config.data.datasets[0].data[0] = pytorch040["fp32"]["GV100"];
-		config.data.datasets[1].data[0] = pytorch040["fp16"]["GV100"];
-		config.data.datasets[2].data[0] = tf180["fp32"]["GV100"];
-		config.data.datasets[3].data[0] = tf180["fp16"]["GV100"];
-		config.data.datasets[4].data[0] = caffe2081["fp32"]["GV100"];
-		config.data.datasets[5].data[0] = caffe2081["fp16"]["GV100"];
-		GV100visible = !GV100visible;
+	if (GV100visible_eval === false)	{ // show gv100 graph
+		config_eval.data.labels[0] = "GV100";
+		config_eval.data.datasets[0].data[0] = pytorch040_eval["fp32"]["GV100"];
+		config_eval.data.datasets[1].data[0] = pytorch040_eval["fp16"]["GV100"];
+		config_eval.data.datasets[2].data[0] = tf180_eval["fp32"]["GV100"];
+		config_eval.data.datasets[3].data[0] = tf180_eval["fp16"]["GV100"];
+		config_eval.data.datasets[4].data[0] = caffe2081_eval["fp32"]["GV100"];
+		config_eval.data.datasets[5].data[0] = caffe2081_eval["fp16"]["GV100"];
+		GV100visible_eval = !GV100visible_eval;
 	}
-	myChart.update();
+	chart_vgg16eval.update();
 });
 
-$("#showOnlyP5000").click(function(){
-	if (GV100visible === true) { // remove gv100 graph
-		config.data.labels.splice(0, 1);
-		config.data.datasets.forEach(function(dataset){
+$("#showOnlyP5000_eval").click(function(){
+	if (GV100visible_eval === true) { // remove gv100 graph
+		config_eval.data.labels.splice(0, 1);
+		config_eval.data.datasets.forEach(function(dataset){
 			dataset.data.splice(0, 1);
 		});
-		GV100visible = !GV100visible;
+		GV100visible_eval = !GV100visible_eval;
 	}
-	if (P5000visible === false) { // show P5000 graph
-		config.data.labels[0] = "P5000";
-		config.data.datasets[0].data[0] = pytorch040["fp32"]["P5000"];
-		config.data.datasets[1].data[0] = pytorch040["fp16"]["P5000"];
-		config.data.datasets[2].data[0] = tf180["fp32"]["P5000"];
-		config.data.datasets[3].data[0] = tf180["fp16"]["P5000"];
-		config.data.datasets[4].data[0] = caffe2081["fp32"]["P5000"];
-		config.data.datasets[5].data[0] = caffe2081["fp16"]["P5000"];
-		P5000visible = !P5000visible;
+	if (P5000visible_eval === false) { // show P5000 graph
+		config_eval.data.labels[0] = "P5000";
+		config_eval.data.datasets[0].data[0] = pytorch040_eval["fp32"]["P5000"];
+		config_eval.data.datasets[1].data[0] = pytorch040_eval["fp16"]["P5000"];
+		config_eval.data.datasets[2].data[0] = tf180_eval["fp32"]["P5000"];
+		config_eval.data.datasets[3].data[0] = tf180_eval["fp16"]["P5000"];
+		config_eval.data.datasets[4].data[0] = caffe2081_eval["fp32"]["P5000"];
+		config_eval.data.datasets[5].data[0] = caffe2081_eval["fp16"]["P5000"];
+		P5000visible_eval = !P5000visible_eval;
 	}
-	myChart.update();
+	chart_vgg16eval.update();
 });
 
-$("#resetGraph").click(function(){
+$("#resetGraph_eval").click(function(){
 	// TODO: Can we make this more efficient? especially for more datasets
-	config.data.labels[0] = "GV100";
-	config.data.datasets[0].data[0] = pytorch040["fp32"]["GV100"];
-	config.data.datasets[1].data[0] = pytorch040["fp16"]["GV100"];
-	config.data.datasets[2].data[0] = tf180["fp32"]["GV100"];
-	config.data.datasets[3].data[0] = tf180["fp16"]["GV100"];
-	config.data.datasets[4].data[0] = caffe2081["fp32"]["GV100"];
-	config.data.datasets[5].data[0] = caffe2081["fp16"]["GV100"];
-	config.data.labels[1] = "P5000";
-	config.data.datasets[0].data[1] = pytorch040["fp32"]["P5000"];
-	config.data.datasets[1].data[1] = pytorch040["fp16"]["P5000"];
-	config.data.datasets[2].data[1] = tf180["fp32"]["P5000"];
-	config.data.datasets[3].data[1] = tf180["fp16"]["P5000"];
-	config.data.datasets[4].data[1] = caffe2081["fp32"]["P5000"];
-	config.data.datasets[5].data[1] = caffe2081["fp16"]["P5000"];
-	GV100visible = true;
-	P5000visible = true;
-	myChart.update();
+	config_eval.data.labels[0] = "GV100";
+	config_eval.data.datasets[0].data[0] = pytorch040_eval["fp32"]["GV100"];
+	config_eval.data.datasets[1].data[0] = pytorch040_eval["fp16"]["GV100"];
+	config_eval.data.datasets[2].data[0] = tf180_eval["fp32"]["GV100"];
+	config_eval.data.datasets[3].data[0] = tf180_eval["fp16"]["GV100"];
+	config_eval.data.datasets[4].data[0] = caffe2081_eval["fp32"]["GV100"];
+	config_eval.data.datasets[5].data[0] = caffe2081_eval["fp16"]["GV100"];
+	config_eval.data.labels[1] = "P5000";
+	config_eval.data.datasets[0].data[1] = pytorch040_eval["fp32"]["P5000"];
+	config_eval.data.datasets[1].data[1] = pytorch040_eval["fp16"]["P5000"];
+	config_eval.data.datasets[2].data[1] = tf180_eval["fp32"]["P5000"];
+	config_eval.data.datasets[3].data[1] = tf180_eval["fp16"]["P5000"];
+	config_eval.data.datasets[4].data[1] = caffe2081_eval["fp32"]["P5000"];
+	config_eval.data.datasets[5].data[1] = caffe2081_eval["fp16"]["P5000"];
+	GV100visible_eval = true;
+	P5000visible_eval = true;
+	chart_vgg16eval.update();
 });
 
 /*
  * #randomizeData
  */
 $("#randomizeData").click(function(){
-	config.data.datasets.forEach(function(dataset){
+	config_eval.data.datasets.forEach(function(dataset){
 		dataset.data = dataset.data.map(function(){
 			return rnd100();
 		});
 	});
 
-	myChart.update();
+	chart_vgg16eval.update();
 });
 
 var colorNames = Object.keys(colorSet);
@@ -213,37 +213,37 @@ var colorNames = Object.keys(colorSet);
  * #addDataset
  */
 $("#addDataset").click(function(){
-	var colorName = colorNames[config.data.datasets.length % colorNames.length];;
+	var colorName = colorNames[config_eval.data.datasets.length % colorNames.length];;
 	var newColor = colorSet[colorName];
 
 	var newDataset = {
-		label: 'Dataset ' + config.data.datasets.length,
+		label: 'Dataset ' + config_eval.data.datasets.length,
 		borderColor: newColor,
 		backgroundColor: color(newColor).alpha(0.2).rgbString(),
 		pointBorderColor: newColor,
 		data: [],
 	};
 
-	for (var index=0; index < config.data.labels.length; ++index) {
+	for (var index=0; index < config_eval.data.labels.length; ++index) {
 		newDataset.data.push(rnd100());
 	}
 
-	config.data.datasets.push(newDataset);
-	myChart.update();
+	config_eval.data.datasets.push(newDataset);
+	chart_vgg16eval.update();
 });
 
 /*
  * #addData
  */
 $("#addData").click(function(){
-	if (config.data.datasets.length > 0){
-		config.data.labels.push('dataset #' + config.data.labels.length);
+	if (config_eval.data.datasets.length > 0){
+		config_eval.data.labels.push('dataset #' + config_eval.data.labels.length);
 
-		config.data.datasets.forEach(function(dataset){
+		config_eval.data.datasets.forEach(function(dataset){
 			dataset.data.push(rnd100());
 		});
 
-		myChart.update();
+		chart_vgg16eval.update();
 	}
 });
 
@@ -251,19 +251,19 @@ $("#addData").click(function(){
  * #removeDataset
  */
 $("#removeDataset").click(function(){
-	config.data.datasets.splice(0, 1);
-	myChart.update();
+	config_eval.data.datasets.splice(0, 1);
+	chart_vgg16eval.update();
 });
 
 /*
  * #removeData
  */
 $("#removeData").click(function(){
-	config.data.labels.pop(); // remove the label first
+	config_eval.data.labels.pop(); // remove the label first
 
-	config.data.datasets.forEach(function(dataset){
+	config_eval.data.datasets.forEach(function(dataset){
 		dataset.data.pop();
 	});
 
-	myChart.update();
+	chart_vgg16eval.update();
 });
