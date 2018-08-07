@@ -128,6 +128,14 @@
       <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
 
       <script>
+      var colorSet = {
+        pytorch_fp32: 'rgb(172, 34, 41)',
+      	pytorch_fp16: 'rgb(224, 64, 72)',
+      	tf_fp32: 'rgb(175, 112, 34)',
+      	tf_fp16: 'rgb(228, 155, 66)',
+      	caffe2_fp32: 'rgb(39, 143, 28)',
+      	caffe2_fp16: 'rgb(67, 187, 54)'
+      };
       $( "#vgg16eval_show" ).click(function() {
       $( "#chartset_vgg16eval" ).show();
       $( "#chartset_vgg16train" ).hide();

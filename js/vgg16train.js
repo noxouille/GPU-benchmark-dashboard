@@ -1,17 +1,3 @@
-var colorSet = {
-	red: 'rgb(255, 99, 132)',
-	orange: 'rgb(255, 159, 64)',
-	yellow: 'rgb(255, 205, 86)',
-	green: 'rgb(75, 192, 192)',
-	blue: 'rgb(54, 162, 235)',
-	purple: 'rgb(153, 102, 255)',
-	grey: 'rgb(201, 203, 207)'
-};
-
-var rnd100 = function(){
-	return Math.round(Math.random() * 100);
-};
-
 // Put your data here
 var GPU = ['GV100', 'P5000'];
 
@@ -30,60 +16,53 @@ var caffe2081_train = {
   'fp16': { 'GV100': 122, 'P5000': 78 }
 };
 
-var randomColor = function(){
-	var rgb = [];
-	for(var i = 0; i < 3; i++)
-	    rgb.push(Math.floor(Math.random() * 255));
-	return  'rgb('+ rgb.join(',') + ')';
-};
-
 var color = Chart.helpers.color;
 var data_train = {
 	labels: GPU,
 	datasets: [{
 		label: 'PyTorch 0.4.0 fp32',
-		backgroundColor: color(colorSet.red).alpha(0.8).rgbString(),
-		borderColor: colorSet.red,
+		backgroundColor: color(colorSet.pytorch_fp32).alpha(0.3).rgbString(),
+		borderColor: colorSet.pytorch_fp32,
 		data: [
 			pytorch040_train["fp32"]["GV100"],
 			pytorch040_train["fp32"]["P5000"]
 		]
 	}, {
 		label: 'PyTorch 0.4.0 fp16',
-		backgroundColor: color(colorSet.orange).alpha(0.8).rgbString(),
-		borderColor: colorSet.orange,
+		backgroundColor: color(colorSet.pytorch_fp16).alpha(0.3).rgbString(),
+		borderColor: colorSet.pytorch_fp16,
 		data: [
 			pytorch040_train["fp16"]["GV100"],
 			pytorch040_train["fp16"]["P5000"]
 		]
 	}, {
 		label: 'TensorFlow 1.8.0 fp32',
-		backgroundColor: color(colorSet.yellow).alpha(0.8).rgbString(),
-		borderColor: colorSet.yellow,
+		backgroundColor: color(colorSet.tf_fp32).alpha(0.3).rgbString(),
+		borderColor: colorSet.tf_fp32,
 		data: [
 			tf180_train["fp32"]["GV100"],
 			tf180_train["fp32"]["P5000"]
 		]
 	}, {
 		label: 'TensorFlow 1.8.0 fp16',
-		backgroundColor: color(colorSet.green).alpha(0.8).rgbString(),
-		borderColor: colorSet.green,
+		backgroundColor: color(colorSet.tf_fp16).alpha(0.3).rgbString(),
+		borderColor: colorSet.tf_fp16,
 		data: [
 			tf180_train["fp16"]["GV100"],
 			tf180_train["fp16"]["P5000"]
 		]
 	}, {
 		label: 'Caffe2 0.8.1 fp32',
-		backgroundColor: color(colorSet.blue).alpha(0.8).rgbString(),
-		borderColor: colorSet.blue,
+		backgroundColor: color(colorSet.caffe2_fp32).alpha(0.3).rgbString(),
+		borderColor: colorSet.caffe2_fp32,
 		data: [
 			caffe2081_train["fp32"]["GV100"],
 			caffe2081_train["fp32"]["P5000"]
 		]
 	}, {
 		label: 'Caffe2 0.8.1 fp16',
-		backgroundColor: color(colorSet.purple).alpha(0.8).rgbString(),
-		borderColor: colorSet.purple,
+		backgroundColor: color(colorSet.caffe2_fp16).alpha(0.3).rgbString(),
+		borderColor: colorSet.caffe2_fp16,
 		data: [
 			caffe2081_train["fp16"]["GV100"],
 			caffe2081_train["fp16"]["P5000"]
