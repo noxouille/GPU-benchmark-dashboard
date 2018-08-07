@@ -1,17 +1,17 @@
 // Put your data here
 var GPU = ['GV100', 'P5000'];
 
-var pytorch040_eval = {
+var pytorch040_vgg16_eval = {
 	'fp32': { 'GV100': 573, 'P5000': 291 },
   'fp16': { 'GV100': 1221, 'P5000': 336 }
 };
 
-var tf180_eval = {
+var tf180_vgg16_eval = {
 	'fp32': { 'GV100': 565, 'P5000': 284 },
   'fp16': { 'GV100': 1095, 'P5000': 307 }
 };
 
-var caffe2081_eval = {
+var caffe2081_vgg16_eval = {
 	'fp32': { 'GV100': 324, 'P5000': 238 },
   'fp16': { 'GV100': 459, 'P5000': 276 }
 };
@@ -24,48 +24,48 @@ var data_eval = {
 		backgroundColor: color(colorSet.pytorch_fp32).alpha(0.3).rgbString(),
 		borderColor: colorSet.pytorch_fp32,
 		data: [
-			pytorch040_eval["fp32"]["GV100"],
-			pytorch040_eval["fp32"]["P5000"]
+			pytorch040_vgg16_eval["fp32"]["GV100"],
+			pytorch040_vgg16_eval["fp32"]["P5000"]
 		]
 	}, {
 		label: 'PyTorch 0.4.0 fp16',
 		backgroundColor: color(colorSet.pytorch_fp16).alpha(0.3).rgbString(),
 		borderColor: colorSet.pytorch_fp16,
 		data: [
-			pytorch040_eval["fp16"]["GV100"],
-			pytorch040_eval["fp16"]["P5000"]
+			pytorch040_vgg16_eval["fp16"]["GV100"],
+			pytorch040_vgg16_eval["fp16"]["P5000"]
 		]
 	}, {
 		label: 'TensorFlow 1.8.0 fp32',
 		backgroundColor: color(colorSet.tf_fp32).alpha(0.3).rgbString(),
 		borderColor: colorSet.tf_fp32,
 		data: [
-			tf180_eval["fp32"]["GV100"],
-			tf180_eval["fp32"]["P5000"]
+			tf180_vgg16_eval["fp32"]["GV100"],
+			tf180_vgg16_eval["fp32"]["P5000"]
 		]
 	}, {
 		label: 'TensorFlow 1.8.0 fp16',
 		backgroundColor: color(colorSet.tf_fp16).alpha(0.3).rgbString(),
 		borderColor: colorSet.tf_fp16,
 		data: [
-			tf180_eval["fp16"]["GV100"],
-			tf180_eval["fp16"]["P5000"]
+			tf180_vgg16_eval["fp16"]["GV100"],
+			tf180_vgg16_eval["fp16"]["P5000"]
 		]
 	}, {
 		label: 'Caffe2 0.8.1 fp32',
 		backgroundColor: color(colorSet.caffe2_fp32).alpha(0.3).rgbString(),
 		borderColor: colorSet.caffe2_fp32,
 		data: [
-			caffe2081_eval["fp32"]["GV100"],
-			caffe2081_eval["fp32"]["P5000"]
+			caffe2081_vgg16_eval["fp32"]["GV100"],
+			caffe2081_vgg16_eval["fp32"]["P5000"]
 		]
 	}, {
 		label: 'Caffe2 0.8.1 fp16',
 		backgroundColor: color(colorSet.caffe2_fp16).alpha(0.3).rgbString(),
 		borderColor: colorSet.caffe2_fp16,
 		data: [
-			caffe2081_eval["fp16"]["GV100"],
-			caffe2081_eval["fp16"]["P5000"]
+			caffe2081_vgg16_eval["fp16"]["GV100"],
+			caffe2081_vgg16_eval["fp16"]["P5000"]
 		]
 	}]
 };
@@ -107,69 +107,69 @@ var config_eval = {
 
 var chart_vgg16eval = new Chart($("#chart_vgg16eval"), config_eval);
 
-var GV100visible_eval = true;
-var P5000visible_eval = true;
+var GV100visible_vgg16_eval = true;
+var P5000visible_vgg16_eval = true;
 
-$("#showOnlyGV100_eval").click(function(){
-	if (P5000visible_eval === true) { // remove P5000 graph
+$("#showOnlyGV100_vgg16_eval").click(function(){
+	if (P5000visible_vgg16_eval === true) { // remove P5000 graph
 		config_eval.data.labels.pop();
 		config_eval.data.datasets.forEach(function(dataset){
 			dataset.data.pop();
 		});
-		P5000visible_eval = !P5000visible_eval;
+		P5000visible_vgg16_eval = !P5000visible_vgg16_eval;
 	}
-	if (GV100visible_eval === false)	{ // show gv100 graph
+	if (GV100visible_vgg16_eval === false)	{ // show gv100 graph
 		config_eval.data.labels[0] = "GV100";
-		config_eval.data.datasets[0].data[0] = pytorch040_eval["fp32"]["GV100"];
-		config_eval.data.datasets[1].data[0] = pytorch040_eval["fp16"]["GV100"];
-		config_eval.data.datasets[2].data[0] = tf180_eval["fp32"]["GV100"];
-		config_eval.data.datasets[3].data[0] = tf180_eval["fp16"]["GV100"];
-		config_eval.data.datasets[4].data[0] = caffe2081_eval["fp32"]["GV100"];
-		config_eval.data.datasets[5].data[0] = caffe2081_eval["fp16"]["GV100"];
-		GV100visible_eval = !GV100visible_eval;
+		config_eval.data.datasets[0].data[0] = pytorch040_vgg16_eval["fp32"]["GV100"];
+		config_eval.data.datasets[1].data[0] = pytorch040_vgg16_eval["fp16"]["GV100"];
+		config_eval.data.datasets[2].data[0] = tf180_vgg16_eval["fp32"]["GV100"];
+		config_eval.data.datasets[3].data[0] = tf180_vgg16_eval["fp16"]["GV100"];
+		config_eval.data.datasets[4].data[0] = caffe2081_vgg16_eval["fp32"]["GV100"];
+		config_eval.data.datasets[5].data[0] = caffe2081_vgg16_eval["fp16"]["GV100"];
+		GV100visible_vgg16_eval = !GV100visible_vgg16_eval;
 	}
 	chart_vgg16eval.update();
 });
 
-$("#showOnlyP5000_eval").click(function(){
-	if (GV100visible_eval === true) { // remove gv100 graph
+$("#showOnlyP5000_vgg16_eval").click(function(){
+	if (GV100visible_vgg16_eval === true) { // remove gv100 graph
 		config_eval.data.labels.splice(0, 1);
 		config_eval.data.datasets.forEach(function(dataset){
 			dataset.data.splice(0, 1);
 		});
-		GV100visible_eval = !GV100visible_eval;
+		GV100visible_vgg16_eval = !GV100visible_vgg16_eval;
 	}
-	if (P5000visible_eval === false) { // show P5000 graph
+	if (P5000visible_vgg16_eval === false) { // show P5000 graph
 		config_eval.data.labels[0] = "P5000";
-		config_eval.data.datasets[0].data[0] = pytorch040_eval["fp32"]["P5000"];
-		config_eval.data.datasets[1].data[0] = pytorch040_eval["fp16"]["P5000"];
-		config_eval.data.datasets[2].data[0] = tf180_eval["fp32"]["P5000"];
-		config_eval.data.datasets[3].data[0] = tf180_eval["fp16"]["P5000"];
-		config_eval.data.datasets[4].data[0] = caffe2081_eval["fp32"]["P5000"];
-		config_eval.data.datasets[5].data[0] = caffe2081_eval["fp16"]["P5000"];
-		P5000visible_eval = !P5000visible_eval;
+		config_eval.data.datasets[0].data[0] = pytorch040_vgg16_eval["fp32"]["P5000"];
+		config_eval.data.datasets[1].data[0] = pytorch040_vgg16_eval["fp16"]["P5000"];
+		config_eval.data.datasets[2].data[0] = tf180_vgg16_eval["fp32"]["P5000"];
+		config_eval.data.datasets[3].data[0] = tf180_vgg16_eval["fp16"]["P5000"];
+		config_eval.data.datasets[4].data[0] = caffe2081_vgg16_eval["fp32"]["P5000"];
+		config_eval.data.datasets[5].data[0] = caffe2081_vgg16_eval["fp16"]["P5000"];
+		P5000visible_vgg16_eval = !P5000visible_vgg16_eval;
 	}
 	chart_vgg16eval.update();
 });
 
-$("#resetGraph_eval").click(function(){
+$("#resetGraph_vgg16_eval").click(function(){
 	// TODO: Can we make this more efficient? especially for more datasets
 	config_eval.data.labels[0] = "GV100";
-	config_eval.data.datasets[0].data[0] = pytorch040_eval["fp32"]["GV100"];
-	config_eval.data.datasets[1].data[0] = pytorch040_eval["fp16"]["GV100"];
-	config_eval.data.datasets[2].data[0] = tf180_eval["fp32"]["GV100"];
-	config_eval.data.datasets[3].data[0] = tf180_eval["fp16"]["GV100"];
-	config_eval.data.datasets[4].data[0] = caffe2081_eval["fp32"]["GV100"];
-	config_eval.data.datasets[5].data[0] = caffe2081_eval["fp16"]["GV100"];
+	config_eval.data.datasets[0].data[0] = pytorch040_vgg16_eval["fp32"]["GV100"];
+	config_eval.data.datasets[1].data[0] = pytorch040_vgg16_eval["fp16"]["GV100"];
+	config_eval.data.datasets[2].data[0] = tf180_vgg16_eval["fp32"]["GV100"];
+	config_eval.data.datasets[3].data[0] = tf180_vgg16_eval["fp16"]["GV100"];
+	config_eval.data.datasets[4].data[0] = caffe2081_vgg16_eval["fp32"]["GV100"];
+	config_eval.data.datasets[5].data[0] = caffe2081_vgg16_eval["fp16"]["GV100"];
 	config_eval.data.labels[1] = "P5000";
-	config_eval.data.datasets[0].data[1] = pytorch040_eval["fp32"]["P5000"];
-	config_eval.data.datasets[1].data[1] = pytorch040_eval["fp16"]["P5000"];
-	config_eval.data.datasets[2].data[1] = tf180_eval["fp32"]["P5000"];
-	config_eval.data.datasets[3].data[1] = tf180_eval["fp16"]["P5000"];
-	config_eval.data.datasets[4].data[1] = caffe2081_eval["fp32"]["P5000"];
-	config_eval.data.datasets[5].data[1] = caffe2081_eval["fp16"]["P5000"];
-	GV100visible_eval = true;
-	P5000visible_eval = true;
+	config_eval.data.datasets[0].data[1] = pytorch040_vgg16_eval["fp32"]["P5000"];
+	config_eval.data.datasets[1].data[1] = pytorch040_vgg16_eval["fp16"]["P5000"];
+	config_eval.data.datasets[2].data[1] = tf180_vgg16_eval["fp32"]["P5000"];
+	config_eval.data.datasets[3].data[1] = tf180_vgg16_eval["fp16"]["P5000"];
+	config_eval.data.datasets[4].data[1] = caffe2081_vgg16_eval["fp32"]["P5000"];
+	config_eval.data.datasets[5].data[1] = caffe2081_vgg16_eval["fp16"]["P5000"];
+	GV100visible_vgg16_eval = true;
+	P5000visible_vgg16_eval = true;
 	chart_vgg16eval.update();
 });
 
