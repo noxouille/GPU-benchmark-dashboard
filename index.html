@@ -16,15 +16,15 @@
 <body>
   <div class="container-fluid">
     <h1>GPU Benchmark</h1>
-    <div class="toggle-button toggle-button--vesi">
-        <input id="vgg16_toggle" type="checkbox">
-        <label for="vgg16_toggle" data-on-text="vgg16" data-off-text="vgg16"></label>
-        <div class="toggle-button__icon"></div>
-    </div>
-    <div class="toggle-button toggle-button--vesi">
-        <input id="resnet152_toggle" type="checkbox">
-        <label for="resnet152_toggle" data-on-text="resnet152" data-off-text="resnet152"></label>
-        <div class="toggle-button__icon"></div>
+    <div class="buttons-wrapper">
+      <button type="button" aria-pressed="true" class="vgg16" id="vgg16_toggle">
+        <span class="icon">&#43;</span>
+        <span class="text">VGG16</span>
+      </button>
+      <button type="button" aria-pressed="false" class="resnet152" id="resnet152_toggle">
+        <span class="icon">&#43;</span>
+        <span class="text">Resnet152</span>
+      </button>
     </div>
     <div class="row-fluid">
       <div class="col-md-6">
@@ -136,6 +136,9 @@
       	caffe2_fp32: 'rgb(39, 143, 28)',
       	caffe2_fp16: 'rgb(67, 187, 54)'
       };
+      $( "#chartset_resnet152eval" ).hide();
+
+
       $( "#vgg16_toggle" ).click(function() {
       $( "#chartset_vgg16eval" ).toggle();
       $( "#chartset_vgg16train" ).toggle();
@@ -150,6 +153,7 @@
       <script src="js/vgg16train.js"></script>
       <script src="js/resnet152eval.js"></script>
       <script src="js/code-main.js"></script>
+      <script src="js/togglebtn.js"></script>
 </body>
 
 </html>

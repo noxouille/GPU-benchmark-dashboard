@@ -459,128 +459,71 @@ li.L9 {
   }
 }
 
-/* Toggle button */
-
-.toggle-button {
-  margin : 0 20px;
+.buttons-wrapper {
+  max-width: 400px;
+  background: #f5f5f5;
+  border: 1px solid grey;
+  margin: 0 auto;
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-/* Toggle button styles */
-
-.toggle-button {
-  display  : inline-block;
-  position : relative;
-  color    : #fff;
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  height: 35px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.24);
+  padding-left: 10px;
+  padding-right: 18px;
+  margin: 3px 4px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  transition: all 0.1s;
 }
-
-.toggle-button label {
-  display        : inline-block;
-  text-align     : left;
-  text-transform : uppercase;
-  cursor         : pointer;
+button.vgg16 {
+  background-color: #285760;
 }
-
-.toggle-button input {
-  display : none;
+button.resnet152 {
+  background-color: #92bd3b;
 }
-
-.toggle-button__icon {
-  pointer-events : none;
-  cursor         : pointer;
+button:hover {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+  transition: -webkit-transform 0.1s;
+  transition: transform 0.1s;
+  transition: transform 0.1s, -webkit-transform 0.1s;
 }
-
-.toggle-button__icon:after,
-.toggle-button__icon:before {
-  content    : "";
-  position   : absolute;
-  top        : 45%;
-  left       : 35%;
-  transition : 0.2s ease-out;
+button:focus {
+  outline: 0;
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.48);
 }
-
-.toggle-button--vesi label {
-  height        : 50px;
-  border-radius : 2rem;
-  line-height   : 50px;
-  transition    : all 0.2s;
+button span.icon {
+  color: #bababa;
+  margin-right: 10px;
+  font-size: 22px;
+  font-weight: 100;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
 }
-
-.toggle-button--vesi label:after,
-.toggle-button--vesi label:before {
-  position   : absolute;
-  right      : 1.5rem;
-  transition : all 0.2s .15s ease-out;
+button span.text {
+  font-size: 14px;
+  font-weight: 500;
 }
-
-.toggle-button--vesi label:before {
-  content : attr(data-on-text);
+button[aria-pressed="false"] {
+  background: transparent;
+  box-shadow: unset;
+  border: 0;
+  color: #a5a5a5;
 }
-
-.toggle-button--vesi label:after {
-  content : attr(data-off-text);
-}
-
-.toggle-button--vesi input[type=checkbox] + label {
-  width      : 150px;
-  background : #FF5335;
-}
-
-.toggle-button--vesi input[type=checkbox] + label:before {
-  opacity   : 0;
-  transform : translate(0, 20px);
-}
-
-.toggle-button--vesi input[type=checkbox] + label:after {
-  opacity   : 1;
-  transform : translate(0, 0);
-}
-
-.toggle-button--vesi input[type=checkbox]:checked ~ label {
-  width      : 180px;
-  background : #61B136;
-}
-
-.toggle-button--vesi input[type=checkbox]:checked ~ label:before {
-  opacity   : 1;
-  transform : translate(0, 0);
-}
-
-.toggle-button--vesi input[type=checkbox]:checked ~ label:after {
-  opacity   : 0;
-  transform : translate(0, -20px);
-}
-
-.toggle-button--vesi input[type=checkbox]:checked ~ .toggle-button__icon:before {
-  width     : 16.66667px;
-  transform : translate(-10%, 100%) rotate(45deg);
-}
-
-.toggle-button--vesi input[type=checkbox]:checked ~ .toggle-button__icon:after {
-  transform : translate(30%) rotate(-45deg);
-}
-
-.toggle-button--vesi .toggle-button__icon {
-  position : absolute;
-  top      : 0;
-  left     : 0;
-  width    : 50px;
-  height   : 50px;
-}
-
-.toggle-button--vesi .toggle-button__icon:after,
-.toggle-button--vesi .toggle-button__icon:before {
-  height        : 3px;
-  border-radius : 3px;
-  background    : #fff;
-  box-shadow    : 0 1px 0 rgba(0, 0, 0, 0.1);
-}
-
-.toggle-button--vesi .toggle-button__icon:before {
-  width     : 25px;
-  transform : rotate(90deg);
-}
-
-.toggle-button--vesi .toggle-button__icon:after {
-  width     : 25px;
-  transform : rotate(0);
+button[aria-pressed="false"] span.icon {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  transition: all 0.3s;
 }
