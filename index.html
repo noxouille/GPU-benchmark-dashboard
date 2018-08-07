@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GPU Benchmark</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/balzss/luxbar/ae5835e2/build/luxbar.min.css">
   <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -14,22 +13,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css" />
 </head>
 
-<header id="luxbar" class="luxbar-fixed">
-  <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox" />
-  <div class="luxbar-menu luxbar-menu-right luxbar-menu-material-cyan">
-    <ul class="luxbar-navigation">
-      <li class="luxbar-header">
-        <a href="#" class="luxbar-brand">GPUBenchmk</a>
-        <label class="luxbar-hamburger luxbar-hamburger-spin" id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
-      </li>
-      <li class="luxbar-item"><a href="#" id="vgg16_show">vgg16</a></li>
-      <li class="luxbar-item"><a href="#" id="resnet152_show">resnet152</a></li>
-    </ul>
-  </div>
-</header>
-
 <body>
   <div class="container-fluid">
+    <h1>GPU Benchmark</h1>
+    <div class="toggle-button toggle-button--vesi">
+        <input id="vgg16_toggle" type="checkbox">
+        <label for="vgg16_toggle" data-on-text="vgg16" data-off-text="vgg16"></label>
+        <div class="toggle-button__icon"></div>
+    </div>
+    <div class="toggle-button toggle-button--vesi">
+        <input id="resnet152_toggle" type="checkbox">
+        <label for="resnet152_toggle" data-on-text="resnet152" data-off-text="resnet152"></label>
+        <div class="toggle-button__icon"></div>
+    </div>
     <div class="row-fluid">
       <div class="col-md-6">
         <div id="chartset_vgg16eval">
@@ -140,15 +136,12 @@
       	caffe2_fp32: 'rgb(39, 143, 28)',
       	caffe2_fp16: 'rgb(67, 187, 54)'
       };
-      $( "#vgg16_show" ).click(function() {
-      $( "#chartset_resnet152eval" ).hide();
-      $( "#chartset_vgg16eval" ).show();
-      $( "#chartset_vgg16train" ).show();
+      $( "#vgg16_toggle" ).click(function() {
+      $( "#chartset_vgg16eval" ).toggle();
+      $( "#chartset_vgg16train" ).toggle();
       });
-      $( "#resnet152_show" ).click(function() {
-      $( "#chartset_vgg16eval" ).hide();
-      $( "#chartset_vgg16train" ).hide();
-      $( "#chartset_resnet152eval" ).show();
+      $( "#resnet152_toggle" ).click(function() {
+      $( "#chartset_resnet152eval" ).toggle();
       });
 
 
