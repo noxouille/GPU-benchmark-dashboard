@@ -70,7 +70,7 @@ var data_eval = {
 	}]
 };
 
-var config_eval = {
+var config_vgg16_eval = {
   type: 'horizontalBar',
   data: data_eval,
 	options: {
@@ -105,27 +105,27 @@ var config_eval = {
 	}
 };
 
-var chart_vgg16eval = new Chart($("#chart_vgg16eval"), config_eval);
+var chart_vgg16eval = new Chart($("#chart_vgg16eval"), config_vgg16_eval);
 
 var GV100visible_vgg16_eval = true;
 var P5000visible_vgg16_eval = true;
 
 $("#showOnlyGV100_vgg16_eval").click(function(){
 	if (P5000visible_vgg16_eval === true) { // remove P5000 graph
-		config_eval.data.labels.pop();
-		config_eval.data.datasets.forEach(function(dataset){
+		config_vgg16_eval.data.labels.pop();
+		config_vgg16_eval.data.datasets.forEach(function(dataset){
 			dataset.data.pop();
 		});
 		P5000visible_vgg16_eval = !P5000visible_vgg16_eval;
 	}
 	if (GV100visible_vgg16_eval === false)	{ // show gv100 graph
-		config_eval.data.labels[0] = "GV100";
-		config_eval.data.datasets[0].data[0] = pytorch040_vgg16_eval["fp32"]["GV100"];
-		config_eval.data.datasets[1].data[0] = pytorch040_vgg16_eval["fp16"]["GV100"];
-		config_eval.data.datasets[2].data[0] = tf180_vgg16_eval["fp32"]["GV100"];
-		config_eval.data.datasets[3].data[0] = tf180_vgg16_eval["fp16"]["GV100"];
-		config_eval.data.datasets[4].data[0] = caffe2081_vgg16_eval["fp32"]["GV100"];
-		config_eval.data.datasets[5].data[0] = caffe2081_vgg16_eval["fp16"]["GV100"];
+		config_vgg16_eval.data.labels[0] = "GV100";
+		config_vgg16_eval.data.datasets[0].data[0] = pytorch040_vgg16_eval["fp32"]["GV100"];
+		config_vgg16_eval.data.datasets[1].data[0] = pytorch040_vgg16_eval["fp16"]["GV100"];
+		config_vgg16_eval.data.datasets[2].data[0] = tf180_vgg16_eval["fp32"]["GV100"];
+		config_vgg16_eval.data.datasets[3].data[0] = tf180_vgg16_eval["fp16"]["GV100"];
+		config_vgg16_eval.data.datasets[4].data[0] = caffe2081_vgg16_eval["fp32"]["GV100"];
+		config_vgg16_eval.data.datasets[5].data[0] = caffe2081_vgg16_eval["fp16"]["GV100"];
 		GV100visible_vgg16_eval = !GV100visible_vgg16_eval;
 	}
 	chart_vgg16eval.update();
@@ -133,20 +133,20 @@ $("#showOnlyGV100_vgg16_eval").click(function(){
 
 $("#showOnlyP5000_vgg16_eval").click(function(){
 	if (GV100visible_vgg16_eval === true) { // remove gv100 graph
-		config_eval.data.labels.splice(0, 1);
-		config_eval.data.datasets.forEach(function(dataset){
+		config_vgg16_eval.data.labels.splice(0, 1);
+		config_vgg16_eval.data.datasets.forEach(function(dataset){
 			dataset.data.splice(0, 1);
 		});
 		GV100visible_vgg16_eval = !GV100visible_vgg16_eval;
 	}
 	if (P5000visible_vgg16_eval === false) { // show P5000 graph
-		config_eval.data.labels[0] = "P5000";
-		config_eval.data.datasets[0].data[0] = pytorch040_vgg16_eval["fp32"]["P5000"];
-		config_eval.data.datasets[1].data[0] = pytorch040_vgg16_eval["fp16"]["P5000"];
-		config_eval.data.datasets[2].data[0] = tf180_vgg16_eval["fp32"]["P5000"];
-		config_eval.data.datasets[3].data[0] = tf180_vgg16_eval["fp16"]["P5000"];
-		config_eval.data.datasets[4].data[0] = caffe2081_vgg16_eval["fp32"]["P5000"];
-		config_eval.data.datasets[5].data[0] = caffe2081_vgg16_eval["fp16"]["P5000"];
+		config_vgg16_eval.data.labels[0] = "P5000";
+		config_vgg16_eval.data.datasets[0].data[0] = pytorch040_vgg16_eval["fp32"]["P5000"];
+		config_vgg16_eval.data.datasets[1].data[0] = pytorch040_vgg16_eval["fp16"]["P5000"];
+		config_vgg16_eval.data.datasets[2].data[0] = tf180_vgg16_eval["fp32"]["P5000"];
+		config_vgg16_eval.data.datasets[3].data[0] = tf180_vgg16_eval["fp16"]["P5000"];
+		config_vgg16_eval.data.datasets[4].data[0] = caffe2081_vgg16_eval["fp32"]["P5000"];
+		config_vgg16_eval.data.datasets[5].data[0] = caffe2081_vgg16_eval["fp16"]["P5000"];
 		P5000visible_vgg16_eval = !P5000visible_vgg16_eval;
 	}
 	chart_vgg16eval.update();
@@ -154,20 +154,20 @@ $("#showOnlyP5000_vgg16_eval").click(function(){
 
 $("#resetGraph_vgg16_eval").click(function(){
 	// TODO: Can we make this more efficient? especially for more datasets
-	config_eval.data.labels[0] = "GV100";
-	config_eval.data.datasets[0].data[0] = pytorch040_vgg16_eval["fp32"]["GV100"];
-	config_eval.data.datasets[1].data[0] = pytorch040_vgg16_eval["fp16"]["GV100"];
-	config_eval.data.datasets[2].data[0] = tf180_vgg16_eval["fp32"]["GV100"];
-	config_eval.data.datasets[3].data[0] = tf180_vgg16_eval["fp16"]["GV100"];
-	config_eval.data.datasets[4].data[0] = caffe2081_vgg16_eval["fp32"]["GV100"];
-	config_eval.data.datasets[5].data[0] = caffe2081_vgg16_eval["fp16"]["GV100"];
-	config_eval.data.labels[1] = "P5000";
-	config_eval.data.datasets[0].data[1] = pytorch040_vgg16_eval["fp32"]["P5000"];
-	config_eval.data.datasets[1].data[1] = pytorch040_vgg16_eval["fp16"]["P5000"];
-	config_eval.data.datasets[2].data[1] = tf180_vgg16_eval["fp32"]["P5000"];
-	config_eval.data.datasets[3].data[1] = tf180_vgg16_eval["fp16"]["P5000"];
-	config_eval.data.datasets[4].data[1] = caffe2081_vgg16_eval["fp32"]["P5000"];
-	config_eval.data.datasets[5].data[1] = caffe2081_vgg16_eval["fp16"]["P5000"];
+	config_vgg16_eval.data.labels[0] = "GV100";
+	config_vgg16_eval.data.datasets[0].data[0] = pytorch040_vgg16_eval["fp32"]["GV100"];
+	config_vgg16_eval.data.datasets[1].data[0] = pytorch040_vgg16_eval["fp16"]["GV100"];
+	config_vgg16_eval.data.datasets[2].data[0] = tf180_vgg16_eval["fp32"]["GV100"];
+	config_vgg16_eval.data.datasets[3].data[0] = tf180_vgg16_eval["fp16"]["GV100"];
+	config_vgg16_eval.data.datasets[4].data[0] = caffe2081_vgg16_eval["fp32"]["GV100"];
+	config_vgg16_eval.data.datasets[5].data[0] = caffe2081_vgg16_eval["fp16"]["GV100"];
+	config_vgg16_eval.data.labels[1] = "P5000";
+	config_vgg16_eval.data.datasets[0].data[1] = pytorch040_vgg16_eval["fp32"]["P5000"];
+	config_vgg16_eval.data.datasets[1].data[1] = pytorch040_vgg16_eval["fp16"]["P5000"];
+	config_vgg16_eval.data.datasets[2].data[1] = tf180_vgg16_eval["fp32"]["P5000"];
+	config_vgg16_eval.data.datasets[3].data[1] = tf180_vgg16_eval["fp16"]["P5000"];
+	config_vgg16_eval.data.datasets[4].data[1] = caffe2081_vgg16_eval["fp32"]["P5000"];
+	config_vgg16_eval.data.datasets[5].data[1] = caffe2081_vgg16_eval["fp16"]["P5000"];
 	GV100visible_vgg16_eval = true;
 	P5000visible_vgg16_eval = true;
 	chart_vgg16eval.update();
@@ -177,7 +177,7 @@ $("#resetGraph_vgg16_eval").click(function(){
  * #randomizeData
  */
 $("#randomizeData").click(function(){
-	config_eval.data.datasets.forEach(function(dataset){
+	config_vgg16_eval.data.datasets.forEach(function(dataset){
 		dataset.data = dataset.data.map(function(){
 			return rnd100();
 		});
@@ -192,22 +192,22 @@ var colorNames = Object.keys(colorSet);
  * #addDataset
  */
 $("#addDataset").click(function(){
-	var colorName = colorNames[config_eval.data.datasets.length % colorNames.length];;
+	var colorName = colorNames[config_vgg16_eval.data.datasets.length % colorNames.length];;
 	var newColor = colorSet[colorName];
 
 	var newDataset = {
-		label: 'Dataset ' + config_eval.data.datasets.length,
+		label: 'Dataset ' + config_vgg16_eval.data.datasets.length,
 		borderColor: newColor,
 		backgroundColor: color(newColor).alpha(0.2).rgbString(),
 		pointBorderColor: newColor,
 		data: [],
 	};
 
-	for (var index=0; index < config_eval.data.labels.length; ++index) {
+	for (var index=0; index < config_vgg16_eval.data.labels.length; ++index) {
 		newDataset.data.push(rnd100());
 	}
 
-	config_eval.data.datasets.push(newDataset);
+	config_vgg16_eval.data.datasets.push(newDataset);
 	chart_vgg16eval.update();
 });
 
@@ -215,10 +215,10 @@ $("#addDataset").click(function(){
  * #addData
  */
 $("#addData").click(function(){
-	if (config_eval.data.datasets.length > 0){
-		config_eval.data.labels.push('dataset #' + config_eval.data.labels.length);
+	if (config_vgg16_eval.data.datasets.length > 0){
+		config_vgg16_eval.data.labels.push('dataset #' + config_vgg16_eval.data.labels.length);
 
-		config_eval.data.datasets.forEach(function(dataset){
+		config_vgg16_eval.data.datasets.forEach(function(dataset){
 			dataset.data.push(rnd100());
 		});
 
@@ -230,7 +230,7 @@ $("#addData").click(function(){
  * #removeDataset
  */
 $("#removeDataset").click(function(){
-	config_eval.data.datasets.splice(0, 1);
+	config_vgg16_eval.data.datasets.splice(0, 1);
 	chart_vgg16eval.update();
 });
 
@@ -238,9 +238,9 @@ $("#removeDataset").click(function(){
  * #removeData
  */
 $("#removeData").click(function(){
-	config_eval.data.labels.pop(); // remove the label first
+	config_vgg16_eval.data.labels.pop(); // remove the label first
 
-	config_eval.data.datasets.forEach(function(dataset){
+	config_vgg16_eval.data.datasets.forEach(function(dataset){
 		dataset.data.pop();
 	});
 
