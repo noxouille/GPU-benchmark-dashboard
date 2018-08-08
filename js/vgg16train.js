@@ -105,12 +105,12 @@ var config_train = {
 	}
 };
 
-var chart_vgg16train = new Chart($("#chart_vgg16train"), config_train);
+var chart_vgg16_train = new Chart($("#chart-vgg16-train"), config_train);
 
 var GV100visible_vgg16_train = true;
 var P5000visible_vgg16_train = true;
 
-$("#showOnlyGV100_vgg16_train").click(function(){
+$("#showOnlyGV100-vgg16-train").click(function(){
 	if (P5000visible_vgg16_train === true) { // remove P5000 graph
 		config_train.data.labels.pop();
 		config_train.data.datasets.forEach(function(dataset){
@@ -128,10 +128,10 @@ $("#showOnlyGV100_vgg16_train").click(function(){
 		config_train.data.datasets[5].data[0] = caffe2081_vgg16_train["fp16"]["GV100"];
 		GV100visible_vgg16_train = !GV100visible_vgg16_train;
 	}
-	chart_vgg16train.update();
+	chart_vgg16_train.update();
 });
 
-$("#showOnlyP5000_vgg16_train").click(function(){
+$("#showOnlyP5000-vgg16-train").click(function(){
 	if (GV100visible_vgg16_train === true) { // remove gv100 graph
 		config_train.data.labels.splice(0, 1);
 		config_train.data.datasets.forEach(function(dataset){
@@ -149,10 +149,10 @@ $("#showOnlyP5000_vgg16_train").click(function(){
 		config_train.data.datasets[5].data[0] = caffe2081_vgg16_train["fp16"]["P5000"];
 		P5000visible_vgg16_train = !P5000visible_vgg16_train;
 	}
-	chart_vgg16train.update();
+	chart_vgg16_train.update();
 });
 
-$("#resetGraph_vgg16_train").click(function(){
+$("#resetGraph-vgg16-train").click(function(){
 	// TODO: Can we make this more efficient? especially for more datasets
 	config_train.data.labels[0] = "GV100";
 	config_train.data.datasets[0].data[0] = pytorch040_vgg16_train["fp32"]["GV100"];
@@ -170,7 +170,7 @@ $("#resetGraph_vgg16_train").click(function(){
 	config_train.data.datasets[5].data[1] = caffe2081_vgg16_train["fp16"]["P5000"];
 	GV100visible_vgg16_train = true;
 	P5000visible_vgg16_train = true;
-	chart_vgg16train.update();
+	chart_vgg16_train.update();
 });
 
 /*
@@ -183,7 +183,7 @@ $("#randomizeData").click(function(){
 		});
 	});
 
-	chart_vgg16train.update();
+	chart_vgg16_train.update();
 });
 
 var colorNames = Object.keys(colorSet);
@@ -208,7 +208,7 @@ $("#addDataset").click(function(){
 	}
 
 	config_train.data.datasets.push(newDataset);
-	chart_vgg16train.update();
+	chart_vgg16_train.update();
 });
 
 /*
@@ -222,7 +222,7 @@ $("#addData").click(function(){
 			dataset.data.push(rnd100());
 		});
 
-		chart_vgg16train.update();
+		chart_vgg16_train.update();
 	}
 });
 
@@ -231,7 +231,7 @@ $("#addData").click(function(){
  */
 $("#removeDataset").click(function(){
 	config_train.data.datasets.splice(0, 1);
-	chart_vgg16train.update();
+	chart_vgg16_train.update();
 });
 
 /*
@@ -244,5 +244,5 @@ $("#removeData").click(function(){
 		dataset.data.pop();
 	});
 
-	chart_vgg16train.update();
+	chart_vgg16_train.update();
 });

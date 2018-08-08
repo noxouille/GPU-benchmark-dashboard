@@ -105,12 +105,12 @@ var config_resnet152_train = {
 	}
 };
 
-var chart_resnet152train = new Chart($("#chart_resnet152train"), config_resnet152_train);
+var chart_resnet152_train = new Chart($("#chart-resnet152-train"), config_resnet152_train);
 
 var GV100visible_resnet152_train = true;
 var P5000visible_resnet152_train = true;
 
-$("#showOnlyGV100_resnet152_train").click(function(){
+$("#showOnlyGV100-resnet152-train").click(function(){
 	if (P5000visible_resnet152_train === true) { // remove P5000 graph
 		config_resnet152_train.data.labels.pop();
 		config_resnet152_train.data.datasets.forEach(function(dataset){
@@ -128,10 +128,10 @@ $("#showOnlyGV100_resnet152_train").click(function(){
 		config_resnet152_train.data.datasets[5].data[0] = caffe2081_resnet152_train["fp16"]["GV100"];
 		GV100visible_resnet152_train = !GV100visible_resnet152_train;
 	}
-	chart_resnet152train.update();
+	chart_resnet152_train.update();
 });
 
-$("#showOnlyP5000_resnet152_train").click(function(){
+$("#showOnlyP5000-resnet152-train").click(function(){
 	if (GV100visible_resnet152_train === true) { // remove gv100 graph
 		config_resnet152_train.data.labels.splice(0, 1);
 		config_resnet152_train.data.datasets.forEach(function(dataset){
@@ -149,10 +149,10 @@ $("#showOnlyP5000_resnet152_train").click(function(){
 		config_resnet152_train.data.datasets[5].data[0] = caffe2081_resnet152_train["fp16"]["P5000"];
 		P5000visible_resnet152_train = !P5000visible_resnet152_train;
 	}
-	chart_resnet152train.update();
+	chart_resnet152_train.update();
 });
 
-$("#resetGraph_resnet152_train").click(function(){
+$("#resetGraph-resnet152-train").click(function(){
 	// TODO: Can we make this more efficient? especially for more datasets
 	config_resnet152_train.data.labels[0] = "GV100";
 	config_resnet152_train.data.datasets[0].data[0] = pytorch040_resnet152_train["fp32"]["GV100"];
@@ -170,7 +170,7 @@ $("#resetGraph_resnet152_train").click(function(){
 	config_resnet152_train.data.datasets[5].data[1] = caffe2081_resnet152_train["fp16"]["P5000"];
 	GV100visible_resnet152_train = true;
 	P5000visible_resnet152_train = true;
-	chart_resnet152train.update();
+	chart_resnet152_train.update();
 });
 
 /*
@@ -183,7 +183,7 @@ $("#randomizeData").click(function(){
 		});
 	});
 
-	chart_resnet152train.update();
+	chart_resnet152_train.update();
 });
 
 var colorNames = Object.keys(colorSet);
@@ -208,7 +208,7 @@ $("#addDataset").click(function(){
 	}
 
 	config_resnet152_train.data.datasets.push(newDataset);
-	chart_resnet152train.update();
+	chart_resnet152_train.update();
 });
 
 /*
@@ -222,7 +222,7 @@ $("#addData").click(function(){
 			dataset.data.push(rnd100());
 		});
 
-		chart_resnet152train.update();
+		chart_resnet152_train.update();
 	}
 });
 
@@ -231,7 +231,7 @@ $("#addData").click(function(){
  */
 $("#removeDataset").click(function(){
 	config_resnet152_train.data.datasets.splice(0, 1);
-	chart_resnet152train.update();
+	chart_resnet152_train.update();
 });
 
 /*
@@ -244,5 +244,5 @@ $("#removeData").click(function(){
 		dataset.data.pop();
 	});
 
-	chart_resnet152train.update();
+	chart_resnet152_train.update();
 });
