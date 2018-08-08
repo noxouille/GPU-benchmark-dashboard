@@ -16,36 +16,37 @@
 <body>
   <div class="container-fluid">
     <h1>GPU Benchmark</h1>
-    <div class="buttons-wrapper">
-      <button type="button" aria-pressed="true" class="vgg16" id="vgg16_toggle">
-        <span class="icon">&#43;</span>
-        <span class="text">VGG16</span>
-      </button>
-      <button type="button" aria-pressed="false" class="resnet152" id="resnet152_toggle">
-        <span class="icon">&#43;</span>
-        <span class="text">Resnet152</span>
-      </button>
-    </div>
     <div class="row-fluid">
       <div class="col-md-6">
-        <div id="chartset_vgg16eval">
-          <canvas id="chart_vgg16eval"></canvas>
-          <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_vgg16_eval">GV100</button>
-          <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_vgg16_eval">P5000</button>
-          <button class="btn btn-red btn-fill-vert-o" id="resetGraph_vgg16_eval">Reset</button>
-        </div>
-        <div id="chartset_vgg16train" class="centered">
-          <canvas id="chart_vgg16train"></canvas>
-          <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_vgg16_train">GV100</button>
-          <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_vgg16_train">P5000</button>
-          <button class="btn btn-red btn-fill-vert-o" id="resetGraph_vgg16_train">Reset</button>
-          <button class="btn btn-navy btn-fill-vert-o" id="newbutton">Wet Asphalt</button>
-        </div>
-        <div id="chartset_resnet152eval">
-          <canvas id="chart_resnet152eval"></canvas>
-          <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_resnet152_eval">GV100</button>
-          <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_resnet152_eval">P5000</button>
-          <button class="btn btn-red btn-fill-vert-o" id="resetGraph_resnet152_eval">Reset</button>
+        <div class="tab-group">
+          <section id="tab-chart-vgg16" title="VGG16">
+            <div id="chartset_vgg16eval">
+              <canvas id="chart_vgg16eval"></canvas>
+              <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_vgg16_eval">GV100</button>
+              <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_vgg16_eval">P5000</button>
+              <button class="btn btn-red btn-fill-vert-o" id="resetGraph_vgg16_eval">Reset</button>
+            </div>
+            <div id="chartset_vgg16train" class="centered">
+              <canvas id="chart_vgg16train"></canvas>
+              <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_vgg16_train">GV100</button>
+              <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_vgg16_train">P5000</button>
+              <button class="btn btn-red btn-fill-vert-o" id="resetGraph_vgg16_train">Reset</button>
+              <button class="btn btn-navy btn-fill-vert-o" id="newbutton">Wet Asphalt</button>
+            </div>
+          </section>
+          <section id="tab-chart-resnet152" title="ResNet152">
+            <div id="chartset_resnet152eval">
+              <canvas id="chart_resnet152eval"></canvas>
+              <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_resnet152_eval">GV100</button>
+              <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_resnet152_eval">P5000</button>
+              <button class="btn btn-red btn-fill-vert-o" id="resetGraph_resnet152_eval">Reset</button>
+            </div>
+          </section>
+          <section id="tab-chart-model" title="Another model">
+            <h3>
+              empty
+            </h3>
+          </section>
         </div>
         <!--button class="btn btn-orange btn-fill-vert-o">Carrot</button>
         <button class="btn btn-purple btn-fill-vert-o">Alizarin</button-->
@@ -136,24 +137,12 @@
       	caffe2_fp32: 'rgb(39, 143, 28)',
       	caffe2_fp16: 'rgb(67, 187, 54)'
       };
-      $( "#chartset_resnet152eval" ).hide();
-
-
-      $( "#vgg16_toggle" ).click(function() {
-      $( "#chartset_vgg16eval" ).toggle();
-      $( "#chartset_vgg16train" ).toggle();
-      });
-      $( "#resnet152_toggle" ).click(function() {
-      $( "#chartset_resnet152eval" ).toggle();
-      });
-
-
       </script>
       <script src="js/vgg16eval.js"></script>
       <script src="js/vgg16train.js"></script>
       <script src="js/resnet152eval.js"></script>
       <script src="js/code-main.js"></script>
-      <script src="js/togglebtn.js"></script>
+      <script src="js/jquerytabs.js"></script>
 </body>
 
 </html>
