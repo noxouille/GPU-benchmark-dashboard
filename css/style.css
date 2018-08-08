@@ -4,10 +4,12 @@
 :root {
     --code-snippet-theme-color: #2A2E37; /* atom dark one */
     --tab-color: #8963ba;
+    --bg-color: #F3F5FF;
 }
 
 h1 {
-  margin-bottom : 50px;
+  margin-top    : 50px;
+  margin-bottom : 25px;
   color         : #2c3e50;
   text-align    : center;
   font-family   : 'Ubuntu', sans-serif;
@@ -20,7 +22,7 @@ h1 {
 }
 
 body, html {
-  background  : #F3F5FF;
+  background  : var(--bg-color);
   font-family : 'Raleway', sans-serif;
 }
 
@@ -30,6 +32,11 @@ body, html {
 
 * {
   box-sizing : border-box;
+}
+
+.container-tab {
+  margin-top: 3.5em;
+  border-radius: 10px;
 }
 
 .container-fluid {

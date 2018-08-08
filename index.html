@@ -18,124 +18,125 @@
     <h1>GPU Benchmark</h1>
     <div class="row-fluid">
       <div class="col-md-6">
-        <div class="tab-group">
-          <section id="tab-chart-vgg16" class="centered" title="VGG16">
-            <div id="chartset_vgg16eval" class="chart-vert-padding">
-              <canvas id="chart_vgg16eval"></canvas>
-              <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_vgg16_eval">GV100</button>
-              <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_vgg16_eval">P5000</button>
-              <button class="btn btn-red btn-fill-vert-o" id="resetGraph_vgg16_eval">Reset</button>
-            </div>
-            <div id="chartset_vgg16train" class="chart-vert-padding">
-              <canvas id="chart_vgg16train"></canvas>
-              <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_vgg16_train">GV100</button>
-              <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_vgg16_train">P5000</button>
-              <button class="btn btn-red btn-fill-vert-o" id="resetGraph_vgg16_train">Reset</button>
-              <button class="btn btn-navy btn-fill-vert-o" id="newbutton">Wet Asphalt</button>
-            </div>
-          </section>
-          <section id="tab-chart-resnet152" class="centered" title="ResNet152">
-            <div id="chartset_resnet152eval">
-              <canvas id="chart_resnet152eval"></canvas>
-              <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_resnet152_eval">GV100</button>
-              <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_resnet152_eval">P5000</button>
-              <button class="btn btn-red btn-fill-vert-o" id="resetGraph_resnet152_eval">Reset</button>
-            </div>
-            <div id="chartset_resnet152train">
-              <canvas id="chart_resnet152train"></canvas>
-              <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_resnet152_train">GV100</button>
-              <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_resnet152_train">P5000</button>
-              <button class="btn btn-red btn-fill-vert-o" id="resetGraph_resnet152_train">Reset</button>
-            </div>
-          </section>
-          <section id="tab-chart-model" class="centered" title="Another model">
-            <h3>
-              empty
-            </h3>
-          </section>
+        <div class="container-tab">
+          <div class="tab-group">
+            <section id="tab-chart-vgg16" class="centered" title="VGG16">
+              <div id="chartset_vgg16eval" class="chart-vert-padding">
+                <canvas id="chart_vgg16eval"></canvas>
+                <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_vgg16_eval">GV100</button>
+                <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_vgg16_eval">P5000</button>
+                <button class="btn btn-red btn-fill-vert-o" id="resetGraph_vgg16_eval">Reset</button>
+              </div>
+              <div id="chartset_vgg16train" class="chart-vert-padding">
+                <canvas id="chart_vgg16train"></canvas>
+                <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_vgg16_train">GV100</button>
+                <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_vgg16_train">P5000</button>
+                <button class="btn btn-red btn-fill-vert-o" id="resetGraph_vgg16_train">Reset</button>
+                <button class="btn btn-navy btn-fill-vert-o" id="newbutton">Wet Asphalt</button>
+              </div>
+            </section>
+            <section id="tab-chart-resnet152" class="centered" title="ResNet152">
+              <div id="chartset_resnet152eval">
+                <canvas id="chart_resnet152eval"></canvas>
+                <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_resnet152_eval">GV100</button>
+                <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_resnet152_eval">P5000</button>
+                <button class="btn btn-red btn-fill-vert-o" id="resetGraph_resnet152_eval">Reset</button>
+              </div>
+              <div id="chartset_resnet152train">
+                <canvas id="chart_resnet152train"></canvas>
+                <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_resnet152_train">GV100</button>
+                <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_resnet152_train">P5000</button>
+                <button class="btn btn-red btn-fill-vert-o" id="resetGraph_resnet152_train">Reset</button>
+              </div>
+            </section>
+            <section id="tab-chart-model" class="centered" title="Another model">
+              <h3>
+                empty
+              </h3>
+            </section>
+          </div>
+          <!--button class="btn btn-orange btn-fill-vert-o">Carrot</button>
+          <button class="btn btn-purple btn-fill-vert-o">Alizarin</button-->
         </div>
-        <!--button class="btn btn-orange btn-fill-vert-o">Carrot</button>
-        <button class="btn btn-purple btn-fill-vert-o">Alizarin</button-->
       </div>
       <div id="wrapper" class="col-md-6">
         <!-- Log tabs -->
-        <div class="tab-group">
-          <section id="tab-pytorch-gv100" class="tab-code" title="PyTorch-GV100">
-            <pre><code id="tab1"></code></pre>
-            <script>
-              $("#tab1").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/pytorch-GV100-bench.txt", function(content) {
-                document.getElementById("tab1").innerHTML = content
-              });
-            </script>
-          </section>
-          <section id="tab-pytorch-p5000" class="tab-code" title="PyTorch-P5000">
-            <pre><code id="tab2"></code></pre>
-            <script>
-              $("#tab2").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/pytorch-P5000-bench.txt", function(content) {
-                document.getElementById("tab2").innerHTML = content
-              });
-            </script>
-          </section>
-          <section id="tab-caffe2-gv100" class="tab-code" title="Caffe2-GV100">
-            <pre><code id="tab3"></code></pre>
-            <script>
-            $("#tab3").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/caffe2-GV100-bench.txt", function(content) {
-              document.getElementById("tab3").innerHTML = content
-            });
-            </script>
-          </section>
-          <section id="tab-caffe2-p5000" class="tab-code" title="Caffe2-P5000">
-            <pre><code id="tab4"></code></pre>
-            <script>
-            $("#tab4").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/caffe2-P5000-bench.txt", function(content) {
-              document.getElementById("tab4").innerHTML = content
-            });
-            </script>
-          </section>
-          <section id="tab-tf-gv100" class="tab-code" title="TF-GV100">
-            <pre><code id="tab5"></code></pre>
-            <script>
-            $("#tab5").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/tensorflow-GV100-bench.txt", function(content) {
-              document.getElementById("tab5").innerHTML = content
-            });
-            </script>
-          </section>
-          <section id="tab-tf-p5000" class="tab-code" title="TF-P5000">
-            <pre><code id="tab6"></code></pre>
-            <script>
-            $("#tab6").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/tensorflow-P5000-bench.txt", function(content) {
-              document.getElementById("tab6").innerHTML = content
-            });
-            </script>
-          </section>
-        </div>
-
+        <div class="container-tab">
+          <div class="tab-group">
+            <section id="tab-pytorch-gv100" class="tab-code" title="PyTorch-GV100">
+              <pre><code id="tab1"></code></pre>
+              <script>
+                $("#tab1").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/pytorch-GV100-bench.txt", function(content) {
+                  document.getElementById("tab1").innerHTML = content
+                });
+              </script>
+            </section>
+            <section id="tab-pytorch-p5000" class="tab-code" title="PyTorch-P5000">
+              <pre><code id="tab2"></code></pre>
+              <script>
+                $("#tab2").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/pytorch-P5000-bench.txt", function(content) {
+                  document.getElementById("tab2").innerHTML = content
+                });
+              </script>
+            </section>
+            <section id="tab-caffe2-gv100" class="tab-code" title="Caffe2-GV100">
+              <pre><code id="tab3"></code></pre>
+              <script>
+                $("#tab3").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/caffe2-GV100-bench.txt", function(content) {
+                  document.getElementById("tab3").innerHTML = content
+                });
+              </script>
+            </section>
+            <section id="tab-caffe2-p5000" class="tab-code" title="Caffe2-P5000">
+              <pre><code id="tab4"></code></pre>
+              <script>
+                $("#tab4").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/caffe2-P5000-bench.txt", function(content) {
+                  document.getElementById("tab4").innerHTML = content
+                });
+              </script>
+            </section>
+            <section id="tab-tf-gv100" class="tab-code" title="TF-GV100">
+              <pre><code id="tab5"></code></pre>
+              <script>
+                $("#tab5").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/tensorflow-GV100-bench.txt", function(content) {
+                  document.getElementById("tab5").innerHTML = content
+                });
+              </script>
+            </section>
+            <section id="tab-tf-p5000" class="tab-code" title="TF-P5000">
+              <pre><code id="tab6"></code></pre>
+              <script>
+                $("#tab6").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/tensorflow-P5000-bench.txt", function(content) {
+                  document.getElementById("tab6").innerHTML = content
+                });
+              </script>
+            </section>
+          </div>
         </div>
       </div>
+    </div>
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js'></script>
-      <!--script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js'></script-->
-      <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js'></script>
+    <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
 
-      <script>
+    <script>
       var colorSet = {
         pytorch_fp32: 'rgb(172, 34, 41)',
-      	pytorch_fp16: 'rgb(224, 64, 72)',
-      	tf_fp32: 'rgb(175, 112, 34)',
-      	tf_fp16: 'rgb(228, 155, 66)',
-      	caffe2_fp32: 'rgb(39, 143, 28)',
-      	caffe2_fp16: 'rgb(67, 187, 54)'
+        pytorch_fp16: 'rgb(224, 64, 72)',
+        tf_fp32: 'rgb(175, 112, 34)',
+        tf_fp16: 'rgb(228, 155, 66)',
+        caffe2_fp32: 'rgb(39, 143, 28)',
+        caffe2_fp16: 'rgb(67, 187, 54)'
       };
-      </script>
-      <script src="js/vgg16eval.js"></script>
-      <script src="js/vgg16train.js"></script>
-      <script src="js/resnet152eval.js"></script>
-      <script src="js/resnet152train.js"></script>
-      <script src="js/code-main.js"></script>
-      <script src="js/jquerytabs.js"></script>
+    </script>
+    <script src="js/vgg16eval.js"></script>
+    <script src="js/vgg16train.js"></script>
+    <script src="js/resnet152eval.js"></script>
+    <script src="js/resnet152train.js"></script>
+    <script src="js/code-main.js"></script>
+    <script src="js/jquerytabs.js"></script>
 </body>
 
 </html>
