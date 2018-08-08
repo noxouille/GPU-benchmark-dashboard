@@ -48,6 +48,20 @@
                 <button class="btn btn-red btn-fill-vert-o" id="resetGraph-resnet152-train">Reset</button>
               </div>
             </section>
+            <section id="tab-chart-model" class="centered" title="DenseNet161">
+              <div id="chartset-densenet161-eval" class="chart-vert-padding">
+                <canvas id="chart-densenet161-eval"></canvas>
+                <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-densenet161-eval">GV100</button>
+                <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-densenet161-eval">P5000</button>
+                <button class="btn btn-red btn-fill-vert-o" id="resetGraph-densenet161-eval">Reset</button>
+              </div>
+              <div id="chartset-densenet161-train" class="chart-vert-padding">
+                <canvas id="chart-densenet161-train"></canvas>
+                <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-densenet161-train">GV100</button>
+                <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-densenet161-train">P5000</button>
+                <button class="btn btn-red btn-fill-vert-o" id="resetGraph-densenet161-train">Reset</button>
+              </div>
+            </section>
           </div>
           <!--button class="btn btn-orange btn-fill-vert-o">Carrot</button>
           <button class="btn btn-purple btn-fill-vert-o">Alizarin</button-->
@@ -129,6 +143,8 @@
     <script src="js/vgg16train.js"></script>
     <script src="js/resnet152eval.js"></script>
     <script src="js/resnet152train.js"></script>
+    <script src="js/densenet161eval.js"></script>
+    <script src="js/densenet161train.js"></script>
     <script src="js/code-main.js"></script>
     <script src="js/jquerytabs.js"></script>
 </body>
