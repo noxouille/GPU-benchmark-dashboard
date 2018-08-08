@@ -1,8 +1,5 @@
-@import
-  "url(https://fonts.googleapis.com/css?family=Ubuntu)",
-  "url(https://fonts.googleapis.com/css?family=Raleway:400",
-  "500",
-  "700)";
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
 
 h1 {
   margin-bottom : 50px;
@@ -24,7 +21,7 @@ h1 {
 body,
 html {
   background  : #F3F5FF;
-  font-family : 'Ubuntu',
+  font-family : 'Raleway',
                 sans-serif;
 }
 
