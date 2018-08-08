@@ -18,8 +18,14 @@
     <h1>GPU Benchmark</h1>
     <div class="row-fluid">
       <div class="col-md-6">
-        <div class="tab-group">
-          <section id="tab-chart-vgg16" title="VGG16">
+
+        <div class="tabs">
+          <ul class="tabs__caption">
+            <li class="active">VGG16</li>
+            <li>ResNet152</li>
+          </ul>
+
+          <div class="tabs__content  active">
             <div id="chartset_vgg16eval">
               <canvas id="chart_vgg16eval"></canvas>
               <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_vgg16_eval">GV100</button>
@@ -33,20 +39,16 @@
               <button class="btn btn-red btn-fill-vert-o" id="resetGraph_vgg16_train">Reset</button>
               <button class="btn btn-navy btn-fill-vert-o" id="newbutton">Wet Asphalt</button>
             </div>
-          </section>
-          <section id="tab-chart-resnet152" title="ResNet152">
+          </div>
+
+          <div class="tabs__content">
             <div id="chartset_resnet152eval">
               <canvas id="chart_resnet152eval"></canvas>
               <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_resnet152_eval">GV100</button>
               <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_resnet152_eval">P5000</button>
               <button class="btn btn-red btn-fill-vert-o" id="resetGraph_resnet152_eval">Reset</button>
             </div>
-          </section>
-          <section id="tab-chart-model" title="Another model">
-            <h3>
-              empty
-            </h3>
-          </section>
+          </div>
         </div>
         <!--button class="btn btn-orange btn-fill-vert-o">Carrot</button>
         <button class="btn btn-purple btn-fill-vert-o">Alizarin</button-->
