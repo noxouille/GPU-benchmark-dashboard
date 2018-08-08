@@ -476,6 +476,7 @@ li.L9 {
 .tab-group section.active {
   opacity: 1;
   height: auto;
+  border: 2px solid #7DCA86; /* border for tab content */
   overflow: visible;
 }
 
