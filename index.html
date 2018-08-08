@@ -19,14 +19,14 @@
     <div class="row-fluid">
       <div class="col-md-6">
         <div class="tab-group">
-          <section id="tab-chart-vgg16" title="VGG16">
+          <section id="tab-chart-vgg16" class="centered" title="VGG16">
             <div id="chartset_vgg16eval">
               <canvas id="chart_vgg16eval"></canvas>
               <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_vgg16_eval">GV100</button>
               <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_vgg16_eval">P5000</button>
               <button class="btn btn-red btn-fill-vert-o" id="resetGraph_vgg16_eval">Reset</button>
             </div>
-            <div id="chartset_vgg16train" class="centered">
+            <div id="chartset_vgg16train">
               <canvas id="chart_vgg16train"></canvas>
               <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_vgg16_train">GV100</button>
               <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_vgg16_train">P5000</button>
@@ -34,15 +34,21 @@
               <button class="btn btn-navy btn-fill-vert-o" id="newbutton">Wet Asphalt</button>
             </div>
           </section>
-          <section id="tab-chart-resnet152" title="ResNet152">
+          <section id="tab-chart-resnet152" class="centered" title="ResNet152">
             <div id="chartset_resnet152eval">
               <canvas id="chart_resnet152eval"></canvas>
               <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_resnet152_eval">GV100</button>
               <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_resnet152_eval">P5000</button>
               <button class="btn btn-red btn-fill-vert-o" id="resetGraph_resnet152_eval">Reset</button>
             </div>
+            <div id="chartset_resnet152train">
+              <canvas id="chart_resnet152train"></canvas>
+              <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100_resnet152_train">GV100</button>
+              <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000_resnet152_train">P5000</button>
+              <button class="btn btn-red btn-fill-vert-o" id="resetGraph_resnet152_train">Reset</button>
+            </div>
           </section>
-          <section id="tab-chart-model" title="Another model">
+          <section id="tab-chart-model" class="centered" title="Another model">
             <h3>
               empty
             </h3>
@@ -127,6 +133,7 @@
       <script src="js/vgg16eval.js"></script>
       <script src="js/vgg16train.js"></script>
       <script src="js/resnet152eval.js"></script>
+      <script src="js/resnet152train.js"></script>
       <script src="js/code-main.js"></script>
       <script src="js/jquerytabs.js"></script>
 </body>

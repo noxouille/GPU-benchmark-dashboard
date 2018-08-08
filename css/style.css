@@ -33,6 +33,9 @@ body, html {
 }
 
 /* Buttons */
+.centered {
+   text-align: center;
+}
 
 .btn {
   display       : inline-block;
