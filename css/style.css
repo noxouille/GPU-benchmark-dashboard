@@ -24,6 +24,10 @@ body, html {
   font-family : 'Raleway', sans-serif;
 }
 
+.chart-vert-padding {
+  margin : 0.5vw 0.5vw 1.5vw 0.5vw; /* top left down right*/
+}
+
 * {
   box-sizing : border-box;
 }
@@ -144,7 +148,7 @@ pre {
   display          : block;
   background-color : var(--code-snippet-theme-color);
   border: 2px solid var(--code-snippet-theme-color); /* border for tab codes */
-  height: 600px; /* make the code snippets height fixed */
+  max-height: 50.5vw; /* set max height */
 }
 
 /* jquery tabs */
@@ -152,7 +156,7 @@ pre {
 .tab-group {
   position: relative;
   border: 1px solid #eee;
-  margin-top: 2.5em;
+  margin-top: 1.0em;
 }
 .tab-code {
   background-color : var(--code-snippet-theme-color);
