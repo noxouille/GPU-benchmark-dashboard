@@ -52,72 +52,58 @@
         <button class="btn btn-purple btn-fill-vert-o">Alizarin</button-->
       </div>
       <div id="wrapper" class="col-md-6">
-        <!-- Nav tabs -->
-        <ul id="codes" class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active">
-            <a href="#tab-1-content" aria-controls="home" role="tab" data-toggle="tab">PyTorch-GV100</a></li>
-          <li role="presentation">
-            <a href="#tab-2-content" aria-controls="profile" role="tab" data-toggle="tab">PyTorch-P5000</a></li>
-          <li role="presentation">
-            <a href="#tab-3-content" aria-controls="profile" role="tab" data-toggle="tab">Caffe2-GV100</a></li>
-          <li role="presentation">
-            <a href="#tab-4-content" aria-controls="profile" role="tab" data-toggle="tab">Caffe2-P5000</a></li>
-          <li role="presentation">
-            <a href="#tab-5-content" aria-controls="profile" role="tab" data-toggle="tab">TF-GV100</a></li>
-          <li role="presentation">
-            <a href="#tab-6-content" aria-controls="profile" role="tab" data-toggle="tab">TF-P5000</a></li>
-        </ul>
-
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="tab-1-content">
+        <!-- Log tabs -->
+        <div class="tab-group">
+          <section id="tab-pytorch-gv100" class="tab-code" title="PyTorch-GV100">
             <pre><code id="tab1"></code></pre>
             <script>
-            $("#tab1").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/pytorch-GV100-bench.txt", function(content) {
-              document.getElementById("tab1").innerHTML = content
-            });
-          </script>
-          </div>
-          <div role="tabpanel" class="tab-pane" id="tab-2-content">
+              $("#tab1").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/pytorch-GV100-bench.txt", function(content) {
+                document.getElementById("tab1").innerHTML = content
+              });
+            </script>
+          </section>
+          <section id="tab-pytorch-p5000" class="tab-code" title="PyTorch-P5000">
             <pre><code id="tab2"></code></pre>
             <script>
-            $("#tab2").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/pytorch-P5000-bench.txt", function(content) {
-              document.getElementById("tab2").innerHTML = content
-            });
+              $("#tab2").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/pytorch-P5000-bench.txt", function(content) {
+                document.getElementById("tab2").innerHTML = content
+              });
             </script>
-          </div>
-          <div role="tabpanel" class="tab-pane" id="tab-3-content">
+          </section>
+          <section id="tab-caffe2-gv100" class="tab-code" title="Caffe2-GV100">
             <pre><code id="tab3"></code></pre>
             <script>
             $("#tab3").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/caffe2-GV100-bench.txt", function(content) {
               document.getElementById("tab3").innerHTML = content
             });
             </script>
-          </div>
-          <div role="tabpanel" class="tab-pane" id="tab-4-content">
+          </section>
+          <section id="tab-caffe2-p5000" class="tab-code" title="Caffe2-P5000">
             <pre><code id="tab4"></code></pre>
             <script>
             $("#tab4").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/caffe2-P5000-bench.txt", function(content) {
               document.getElementById("tab4").innerHTML = content
             });
             </script>
-          </div>
-          <div role="tabpanel" class="tab-pane" id="tab-5-content">
+          </section>
+          <section id="tab-tf-gv100" class="tab-code" title="TF-GV100">
             <pre><code id="tab5"></code></pre>
             <script>
             $("#tab5").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/tensorflow-GV100-bench.txt", function(content) {
               document.getElementById("tab5").innerHTML = content
             });
             </script>
-          </div>
-          <div role="tabpanel" class="tab-pane" id="tab-6-content">
+          </section>
+          <section id="tab-tf-p5000" class="tab-code" title="TF-P5000">
             <pre><code id="tab6"></code></pre>
             <script>
             $("#tab6").load("https://raw.githubusercontent.com/noxouille/deep-learning-benchmark/master/results/tensorflow-P5000-bench.txt", function(content) {
               document.getElementById("tab6").innerHTML = content
             });
             </script>
-          </div>
+          </section>
+        </div>
+
         </div>
       </div>
 
