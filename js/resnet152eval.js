@@ -83,13 +83,14 @@ var config_resnet152_eval = {
 		},
 		responsive: true,
 		legend: {
-			position: 'right',
+			position: 'top',
+			display: false
 		},
 		tooltips: {
 			// 'point' for single data point,
 			// 'index' for all data points in a group,
 			// 'nearest' for single data point nearby.
-		    mode: 'nearest',
+		    mode: 'index',
 		    intersect: false
 		},
 		hover: {
@@ -173,13 +174,11 @@ $("#resetGraph-resnet152-eval").click(function(){
 	chart_resnet152_eval.update();
 });
 
-var show_resnet152eval_Legends = true;
 $("#legends-resnet152-eval").click(function(){
-	if (show_resnet152eval_Legends == true) {
+	if (config_resnet152_eval.options.legend.display == true) {
 		config_resnet152_eval.options.legend.display = false;
 	} else {
 		config_resnet152_eval.options.legend.display = true;
 	}
-	show_resnet152eval_Legends = !show_resnet152eval_Legends;
 	chart_resnet152_eval.update();
 });

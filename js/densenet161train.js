@@ -83,13 +83,14 @@ var config_densenet161_train = {
 		},
 		responsive: true,
 		legend: {
-			position: 'right',
+			position: 'top',
+			display: false
 		},
 		tooltips: {
 			// 'point' for single data point,
 			// 'index' for all data points in a group,
 			// 'nearest' for single data point nearby.
-		    mode: 'nearest',
+		    mode: 'index',
 		    intersect: false
 		},
 		hover: {
@@ -173,13 +174,11 @@ $("#resetGraph-densenet161-train").click(function(){
 	chart_densenet161_train.update();
 });
 
-var show_densenet161train_Legends = true;
 $("#legends-densenet161-train").click(function(){
-	if (show_densenet161train_Legends == true) {
+	if (config_densenet161_train.options.legend.display == true) {
 		config_densenet161_train.options.legend.display = false;
 	} else {
 		config_densenet161_train.options.legend.display = true;
 	}
-	show_densenet161train_Legends = !show_densenet161train_Legends;
 	chart_densenet161_train.update();
 });

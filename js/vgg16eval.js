@@ -83,13 +83,14 @@ var config_vgg16_eval = {
 		},
 		responsive: true,
 		legend: {
-			position: 'right',
+			position: 'top',
+			display: false
 		},
 		tooltips: {
 			// 'point' for single data point,
 			// 'index' for all data points in a group,
 			// 'nearest' for single data point nearby.
-		    mode: 'nearest',
+		    mode: 'index',
 		    intersect: false
 		},
 		hover: {
@@ -173,13 +174,11 @@ $("#resetGraph-vgg16-eval").click(function(){
 	chart_vgg16_eval.update();
 });
 
-var show_vgg16eval_Legends = true;
 $("#legends-vgg16-eval").click(function(){
-	if (show_vgg16eval_Legends == true) {
+	if (config_vgg16_eval.options.legend.display == true) {
 		config_vgg16_eval.options.legend.display = false;
 	} else {
 		config_vgg16_eval.options.legend.display = true;
 	}
-	show_vgg16eval_Legends = !show_vgg16eval_Legends;
 	chart_vgg16_eval.update();
 });
