@@ -172,3 +172,14 @@ $("#resetGraph-vgg16-train").click(function(){
 	P5000visible_vgg16_train = true;
 	chart_vgg16_train.update();
 });
+
+var show_vgg16train_Legends = true;
+$("#legends-vgg16-train").click(function(){
+	if (show_vgg16train_Legends == true) {
+		config_vgg16_train.options.legend.display = false;
+	} else {
+		config_vgg16_train.options.legend.display = true;
+	}
+	show_vgg16train_Legends = !show_vgg16train_Legends;
+	chart_vgg16_train.update();
+});

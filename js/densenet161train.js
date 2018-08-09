@@ -172,3 +172,14 @@ $("#resetGraph-densenet161-train").click(function(){
 	P5000visible_densenet161_train = true;
 	chart_densenet161_train.update();
 });
+
+var show_densenet161train_Legends = true;
+$("#legends-densenet161-train").click(function(){
+	if (show_densenet161train_Legends == true) {
+		config_densenet161_train.options.legend.display = false;
+	} else {
+		config_densenet161_train.options.legend.display = true;
+	}
+	show_densenet161train_Legends = !show_densenet161train_Legends;
+	chart_densenet161_train.update();
+});

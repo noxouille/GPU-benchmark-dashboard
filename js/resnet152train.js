@@ -172,3 +172,14 @@ $("#resetGraph-resnet152-train").click(function(){
 	P5000visible_resnet152_train = true;
 	chart_resnet152_train.update();
 });
+
+var show_resnet152train_Legends = true;
+$("#legends-resnet152-train").click(function(){
+	if (show_resnet152train_Legends == true) {
+		config_resnet152_train.options.legend.display = false;
+	} else {
+		config_resnet152_train.options.legend.display = true;
+	}
+	show_resnet152train_Legends = !show_resnet152train_Legends;
+	chart_resnet152_train.update();
+});
