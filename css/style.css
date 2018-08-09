@@ -155,7 +155,7 @@ pre {
   display          : block;
   background-color : var(--code-snippet-theme-color);
   border: 2px solid var(--code-snippet-theme-color); /* border for tab codes */
-  max-height: 50.5vw; /* set max height */
+  max-height: 35vw; /* set max height */
 }
 
 /* jquery tabs */
