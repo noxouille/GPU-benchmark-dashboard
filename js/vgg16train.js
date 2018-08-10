@@ -101,7 +101,7 @@ var config_vgg16_train = {
 			display: true,
 			fontSize:20,
 			fontColor:'#666',
-			text: 'vgg16 train (images per sec)'
+			text: 'train'
 		}
 	}
 };

@@ -101,7 +101,7 @@ var config_vgg16_eval = {
 			display: true,
 			fontSize:20,
 			fontColor:'#666',
-			text: 'vgg16 eval (images per sec)'
+			text: 'eval'
 		}
 	}
 };
