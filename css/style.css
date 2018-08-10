@@ -208,3 +208,12 @@ pre {
   line-height: 2.5em;
   margin-top: 0;
 }
+
+
+
+@media screen and (max-width: 480px) {
+  h1 { font-size: 24px !important; }
+  .btn {
+    padding: 0 5px !important ;
+  }
+}
