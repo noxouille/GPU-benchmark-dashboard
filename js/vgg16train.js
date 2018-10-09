@@ -70,8 +70,8 @@ var data_train = {
 	}]
 };
 
-var config_train = {
-  type: 'horizontalBar',
+var config_vgg16_train = {
+  type: 'bar',
   data: data_train,
 	options: {
 		// Elements options apply to all of the options unless overridden in a dataset
@@ -83,13 +83,14 @@ var config_train = {
 		},
 		responsive: true,
 		legend: {
-			position: 'right',
+			position: 'top',
+			display: false
 		},
 		tooltips: {
 			// 'point' for single data point,
 			// 'index' for all data points in a group,
 			// 'nearest' for single data point nearby.
-		    mode: 'nearest',
+		    mode: 'index',
 		    intersect: false
 		},
 		hover: {
@@ -100,32 +101,39 @@ var config_train = {
 			display: true,
 			fontSize:20,
 			fontColor:'#666',
-			text: 'vgg16 train (images per sec)'
+			text: 'train'
+		},
+		scales: {
+			yAxes: [{
+				ticks: {
+					beginAtZero: true
+				}
+			}]
 		}
 	}
 };
 
-var chart_vgg16_train = new Chart($("#chart-vgg16-train"), config_train);
+var chart_vgg16_train = new Chart($("#chart-vgg16-train"), config_vgg16_train);
 
 var GV100visible_vgg16_train = true;
 var P5000visible_vgg16_train = true;
 
 $("#showOnlyGV100-vgg16-train").click(function(){
 	if (P5000visible_vgg16_train === true) { // remove P5000 graph
-		config_train.data.labels.pop();
-		config_train.data.datasets.forEach(function(dataset){
+		config_vgg16_train.data.labels.pop();
+		config_vgg16_train.data.datasets.forEach(function(dataset){
 			dataset.data.pop();
 		});
 		P5000visible_vgg16_train = !P5000visible_vgg16_train;
 	}
 	if (GV100visible_vgg16_train === false)	{ // show gv100 graph
-		config_train.data.labels[0] = "GV100";
-		config_train.data.datasets[0].data[0] = pytorch040_vgg16_train["fp32"]["GV100"];
-		config_train.data.datasets[1].data[0] = pytorch040_vgg16_train["fp16"]["GV100"];
-		config_train.data.datasets[2].data[0] = tf180_vgg16_train["fp32"]["GV100"];
-		config_train.data.datasets[3].data[0] = tf180_vgg16_train["fp16"]["GV100"];
-		config_train.data.datasets[4].data[0] = caffe2081_vgg16_train["fp32"]["GV100"];
-		config_train.data.datasets[5].data[0] = caffe2081_vgg16_train["fp16"]["GV100"];
+		config_vgg16_train.data.labels[0] = "GV100";
+		config_vgg16_train.data.datasets[0].data[0] = pytorch040_vgg16_train["fp32"]["GV100"];
+		config_vgg16_train.data.datasets[1].data[0] = pytorch040_vgg16_train["fp16"]["GV100"];
+		config_vgg16_train.data.datasets[2].data[0] = tf180_vgg16_train["fp32"]["GV100"];
+		config_vgg16_train.data.datasets[3].data[0] = tf180_vgg16_train["fp16"]["GV100"];
+		config_vgg16_train.data.datasets[4].data[0] = caffe2081_vgg16_train["fp32"]["GV100"];
+		config_vgg16_train.data.datasets[5].data[0] = caffe2081_vgg16_train["fp16"]["GV100"];
 		GV100visible_vgg16_train = !GV100visible_vgg16_train;
 	}
 	chart_vgg16_train.update();
@@ -133,20 +141,20 @@ $("#showOnlyGV100-vgg16-train").click(function(){
 
 $("#showOnlyP5000-vgg16-train").click(function(){
 	if (GV100visible_vgg16_train === true) { // remove gv100 graph
-		config_train.data.labels.splice(0, 1);
-		config_train.data.datasets.forEach(function(dataset){
+		config_vgg16_train.data.labels.splice(0, 1);
+		config_vgg16_train.data.datasets.forEach(function(dataset){
 			dataset.data.splice(0, 1);
 		});
 		GV100visible_vgg16_train = !GV100visible_vgg16_train;
 	}
 	if (P5000visible_vgg16_train === false) { // show P5000 graph
-		config_train.data.labels[0] = "P5000";
-		config_train.data.datasets[0].data[0] = pytorch040_vgg16_train["fp32"]["P5000"];
-		config_train.data.datasets[1].data[0] = pytorch040_vgg16_train["fp16"]["P5000"];
-		config_train.data.datasets[2].data[0] = tf180_vgg16_train["fp32"]["P5000"];
-		config_train.data.datasets[3].data[0] = tf180_vgg16_train["fp16"]["P5000"];
-		config_train.data.datasets[4].data[0] = caffe2081_vgg16_train["fp32"]["P5000"];
-		config_train.data.datasets[5].data[0] = caffe2081_vgg16_train["fp16"]["P5000"];
+		config_vgg16_train.data.labels[0] = "P5000";
+		config_vgg16_train.data.datasets[0].data[0] = pytorch040_vgg16_train["fp32"]["P5000"];
+		config_vgg16_train.data.datasets[1].data[0] = pytorch040_vgg16_train["fp16"]["P5000"];
+		config_vgg16_train.data.datasets[2].data[0] = tf180_vgg16_train["fp32"]["P5000"];
+		config_vgg16_train.data.datasets[3].data[0] = tf180_vgg16_train["fp16"]["P5000"];
+		config_vgg16_train.data.datasets[4].data[0] = caffe2081_vgg16_train["fp32"]["P5000"];
+		config_vgg16_train.data.datasets[5].data[0] = caffe2081_vgg16_train["fp16"]["P5000"];
 		P5000visible_vgg16_train = !P5000visible_vgg16_train;
 	}
 	chart_vgg16_train.update();
@@ -154,21 +162,30 @@ $("#showOnlyP5000-vgg16-train").click(function(){
 
 $("#resetGraph-vgg16-train").click(function(){
 	// TODO: Can we make this more efficient? especially for more datasets
-	config_train.data.labels[0] = "GV100";
-	config_train.data.datasets[0].data[0] = pytorch040_vgg16_train["fp32"]["GV100"];
-	config_train.data.datasets[1].data[0] = pytorch040_vgg16_train["fp16"]["GV100"];
-	config_train.data.datasets[2].data[0] = tf180_vgg16_train["fp32"]["GV100"];
-	config_train.data.datasets[3].data[0] = tf180_vgg16_train["fp16"]["GV100"];
-	config_train.data.datasets[4].data[0] = caffe2081_vgg16_train["fp32"]["GV100"];
-	config_train.data.datasets[5].data[0] = caffe2081_vgg16_train["fp16"]["GV100"];
-	config_train.data.labels[1] = "P5000";
-	config_train.data.datasets[0].data[1] = pytorch040_vgg16_train["fp32"]["P5000"];
-	config_train.data.datasets[1].data[1] = pytorch040_vgg16_train["fp16"]["P5000"];
-	config_train.data.datasets[2].data[1] = tf180_vgg16_train["fp32"]["P5000"];
-	config_train.data.datasets[3].data[1] = tf180_vgg16_train["fp16"]["P5000"];
-	config_train.data.datasets[4].data[1] = caffe2081_vgg16_train["fp32"]["P5000"];
-	config_train.data.datasets[5].data[1] = caffe2081_vgg16_train["fp16"]["P5000"];
+	config_vgg16_train.data.labels[0] = "GV100";
+	config_vgg16_train.data.datasets[0].data[0] = pytorch040_vgg16_train["fp32"]["GV100"];
+	config_vgg16_train.data.datasets[1].data[0] = pytorch040_vgg16_train["fp16"]["GV100"];
+	config_vgg16_train.data.datasets[2].data[0] = tf180_vgg16_train["fp32"]["GV100"];
+	config_vgg16_train.data.datasets[3].data[0] = tf180_vgg16_train["fp16"]["GV100"];
+	config_vgg16_train.data.datasets[4].data[0] = caffe2081_vgg16_train["fp32"]["GV100"];
+	config_vgg16_train.data.datasets[5].data[0] = caffe2081_vgg16_train["fp16"]["GV100"];
+	config_vgg16_train.data.labels[1] = "P5000";
+	config_vgg16_train.data.datasets[0].data[1] = pytorch040_vgg16_train["fp32"]["P5000"];
+	config_vgg16_train.data.datasets[1].data[1] = pytorch040_vgg16_train["fp16"]["P5000"];
+	config_vgg16_train.data.datasets[2].data[1] = tf180_vgg16_train["fp32"]["P5000"];
+	config_vgg16_train.data.datasets[3].data[1] = tf180_vgg16_train["fp16"]["P5000"];
+	config_vgg16_train.data.datasets[4].data[1] = caffe2081_vgg16_train["fp32"]["P5000"];
+	config_vgg16_train.data.datasets[5].data[1] = caffe2081_vgg16_train["fp16"]["P5000"];
 	GV100visible_vgg16_train = true;
 	P5000visible_vgg16_train = true;
+	chart_vgg16_train.update();
+});
+
+$("#legends-vgg16-train").click(function(){
+	if (config_vgg16_train.options.legend.display == true) {
+		config_vgg16_train.options.legend.display = false;
+	} else {
+		config_vgg16_train.options.legend.display = true;
+	}
 	chart_vgg16_train.update();
 });

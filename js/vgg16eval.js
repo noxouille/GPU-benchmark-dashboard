@@ -71,7 +71,7 @@ var data_eval = {
 };
 
 var config_vgg16_eval = {
-  type: 'horizontalBar',
+  type: 'bar',
   data: data_eval,
 	options: {
 		// Elements options apply to all of the options unless overridden in a dataset
@@ -83,13 +83,14 @@ var config_vgg16_eval = {
 		},
 		responsive: true,
 		legend: {
-			position: 'right',
+			position: 'top',
+			display: false
 		},
 		tooltips: {
 			// 'point' for single data point,
 			// 'index' for all data points in a group,
 			// 'nearest' for single data point nearby.
-		    mode: 'nearest',
+		    mode: 'index',
 		    intersect: false
 		},
 		hover: {
@@ -100,7 +101,14 @@ var config_vgg16_eval = {
 			display: true,
 			fontSize:20,
 			fontColor:'#666',
-			text: 'vgg16 eval (images per sec)'
+			text: 'eval'
+		},
+		scales: {
+			yAxes: [{
+				ticks: {
+					beginAtZero: true
+				}
+			}]
 		}
 	}
 };
@@ -170,5 +178,14 @@ $("#resetGraph-vgg16-eval").click(function(){
 	config_vgg16_eval.data.datasets[5].data[1] = caffe2081_vgg16_eval["fp16"]["P5000"];
 	GV100visible_vgg16_eval = true;
 	P5000visible_vgg16_eval = true;
+	chart_vgg16_eval.update();
+});
+
+$("#legends-vgg16-eval").click(function(){
+	if (config_vgg16_eval.options.legend.display == true) {
+		config_vgg16_eval.options.legend.display = false;
+	} else {
+		config_vgg16_eval.options.legend.display = true;
+	}
 	chart_vgg16_eval.update();
 });

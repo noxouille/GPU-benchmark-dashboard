@@ -71,7 +71,7 @@ var data_eval = {
 };
 
 var config_densenet161_eval = {
-  type: 'horizontalBar',
+  type: 'bar',
   data: data_eval,
 	options: {
 		// Elements options apply to all of the options unless overridden in a dataset
@@ -83,13 +83,14 @@ var config_densenet161_eval = {
 		},
 		responsive: true,
 		legend: {
-			position: 'right',
+			position: 'top',
+			display: false
 		},
 		tooltips: {
 			// 'point' for single data point,
 			// 'index' for all data points in a group,
 			// 'nearest' for single data point nearby.
-		    mode: 'nearest',
+		    mode: 'index',
 		    intersect: false
 		},
 		hover: {
@@ -100,7 +101,14 @@ var config_densenet161_eval = {
 			display: true,
 			fontSize:20,
 			fontColor:'#666',
-			text: 'densenet161 eval (images per sec)'
+			text: 'eval'
+		},
+		scales: {
+			yAxes: [{
+				ticks: {
+					beginAtZero: true
+				}
+			}]
 		}
 	}
 };
@@ -170,5 +178,14 @@ $("#resetGraph-densenet161-eval").click(function(){
 	config_densenet161_eval.data.datasets[5].data[1] = caffe2081_densenet161_eval["fp16"]["P5000"];
 	GV100visible_densenet161_eval = true;
 	P5000visible_densenet161_eval = true;
+	chart_densenet161_eval.update();
+});
+
+$("#legends-densenet161-eval").click(function(){
+	if (config_densenet161_eval.options.legend.display == true) {
+		config_densenet161_eval.options.legend.display = false;
+	} else {
+		config_densenet161_eval.options.legend.display = true;
+	}
 	chart_densenet161_eval.update();
 });

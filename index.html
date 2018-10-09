@@ -11,89 +11,94 @@
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.2/fullpage.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.2/fullpage.css" />
 </head>
 
 <body>
-    <h1>GPU Benchmark</h1>
-    <div class="container-fluid">
-      <div class="container-tab">
-        <div class="tab-group">
-          <section id="tab-chart-vgg16" class="centered" title="VGG16">
-            <div class="row">
-              <div id="chartset-vgg16-eval" class="col-md col-sm-6">
-                <canvas id="chart-vgg16-eval"></canvas>
-                <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-vgg16-eval">GV100</button>
-                <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-vgg16-eval">P5000</button>
-                <button class="btn btn-red btn-fill-vert-o" id="resetGraph-vgg16-eval">Reset</button>
-              </div>
-              <div id="chartset-vgg16-train" class="col-md col-sm-6">
-                <canvas id="chart-vgg16-train"></canvas>
-                <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-vgg16-train">GV100</button>
-                <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-vgg16-train">P5000</button>
-                <button class="btn btn-red btn-fill-vert-o" id="resetGraph-vgg16-train">Reset</button>
-              </div>
-            </div>
-          </section>
-          <section id="tab-chart-resnet152" class="centered" title="ResNet152">
-            <div class="row">
-              <div id="chartset-resnet152-eval" class="col-md col-sm-6">
-                <canvas id="chart-resnet152-eval"></canvas>
-                <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-resnet152-eval">GV100</button>
-                <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-resnet152-eval">P5000</button>
-                <button class="btn btn-red btn-fill-vert-o" id="resetGraph-resnet152-eval">Reset</button>
-              </div>
-              <div id="chartset-resnet152-train" class="col-md col-sm-6">
-                <canvas id="chart-resnet152-train"></canvas>
-                <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-resnet152-train">GV100</button>
-                <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-resnet152-train">P5000</button>
-                <button class="btn btn-red btn-fill-vert-o" id="resetGraph-resnet152-train">Reset</button>
-              </div>
-            </div>
-          </section>
-          <section id="tab-chart-model" class="centered" title="DenseNet161">
-            <div class="row">
-              <div id="chartset-densenet161-eval" class="col-md col-sm-6">
-                <canvas id="chart-densenet161-eval"></canvas>
-                <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-densenet161-eval">GV100</button>
-                <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-densenet161-eval">P5000</button>
-                <button class="btn btn-red btn-fill-vert-o" id="resetGraph-densenet161-eval">Reset</button>
-              </div>
-              <div id="chartset-densenet161-train" class="col-md col-sm-6">
-                <canvas id="chart-densenet161-train"></canvas>
-                <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-densenet161-train">GV100</button>
-                <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-densenet161-train">P5000</button>
-                <button class="btn btn-red btn-fill-vert-o" id="resetGraph-densenet161-train">Reset</button>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-      <div id="wrapper" class="col-md col-sm-12">
-        <!-- Log tabs -->
-        <div class="container-tab">
-          <div class="tab-group">
-            <section id="tab-pytorch-gv100" class="tab-code" title="PyTorch-GV100">
-              <pre><code id="tab1"></code></pre>
-            </section>
-            <section id="tab-pytorch-p5000" class="tab-code" title="PyTorch-P5000">
-              <pre><code id="tab2"></code></pre>
-            </section>
-            <section id="tab-caffe2-gv100" class="tab-code" title="Caffe2-GV100">
-              <pre><code id="tab3"></code></pre>
-            </section>
-            <section id="tab-caffe2-p5000" class="tab-code" title="Caffe2-P5000">
-              <pre><code id="tab4"></code></pre>
-            </section>
-            <section id="tab-tf-gv100" class="tab-code" title="TF-GV100">
-              <pre><code id="tab5"></code></pre>
-            </section>
-            <section id="tab-tf-p5000" class="tab-code" title="TF-P5000">
-              <pre><code id="tab6"></code></pre>
-            </section>
+<div id="fullpage">
+  <div class="section">
+    <div class="slide" data-anchor="graph1">
+      <h1>VGG16</h1>
+      <h5>(imgs/sec)</h5>
+      <div class="container centered">
+        <div class="row justify-content-center">
+          <div id="chartset-vgg16-eval" class="col-12 col-md-6">
+            <canvas id="chart-vgg16-eval"></canvas>
+            <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-vgg16-eval">GV100</button>
+            <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-vgg16-eval">P5000</button>
+            <button class="btn btn-red btn-fill-vert-o" id="resetGraph-vgg16-eval">Reset</button>
+            <button class="btn btn-purple btn-fill-vert-o" id="legends-vgg16-eval">Legends</button>
+          </div>
+          <div id="chartset-vgg16-eval" class="col-12 col-md-6">
+            <canvas id="chart-vgg16-train"></canvas>
+            <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-vgg16-train">GV100</button>
+            <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-vgg16-train">P5000</button>
+            <button class="btn btn-red btn-fill-vert-o" id="resetGraph-vgg16-train">Reset</button>
+            <button class="btn btn-purple btn-fill-vert-o" id="legends-vgg16-train">Legends</button>
           </div>
         </div>
       </div>
     </div>
+    <div class="slide" data-anchor="graph2">
+      <h1>ResNet152</h1>
+      <h5>(imgs/sec)</h5>
+      <div class="container centered">
+        <div class="row justify-content-center">
+          <div id="chartset-resnet152-eval" class="col-12 col-md-6">
+            <canvas id="chart-resnet152-eval"></canvas>
+            <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-resnet152-eval">GV100</button>
+            <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-resnet152-eval">P5000</button>
+            <button class="btn btn-red btn-fill-vert-o" id="resetGraph-resnet152-eval">Reset</button>
+            <button class="btn btn-purple btn-fill-vert-o" id="legends-resnet152-eval">Legends</button>
+          </div>
+          <div id="chartset-resnet152-train" class="col-12 col-md-6">
+            <canvas id="chart-resnet152-train"></canvas>
+            <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-resnet152-train">GV100</button>
+            <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-resnet152-train">P5000</button>
+            <button class="btn btn-red btn-fill-vert-o" id="resetGraph-resnet152-train">Reset</button>
+            <button class="btn btn-purple btn-fill-vert-o" id="legends-resnet152-train">Legends</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide" data-anchor="graph3">
+      <h1>DenseNet161</h1>
+      <h5>(imgs/sec)</h5>
+      <div class="container centered">
+        <div class="row justify-content-center">
+          <div id="chartset-densenet161-eval" class="col-12 col-md-6">
+            <canvas id="chart-densenet161-eval"></canvas>
+            <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-densenet161-eval">GV100</button>
+            <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-densenet161-eval">P5000</button>
+            <button class="btn btn-red btn-fill-vert-o" id="resetGraph-densenet161-eval">Reset</button>
+            <button class="btn btn-purple btn-fill-vert-o" id="legends-densenet161-eval">Legends</button>
+          </div>
+          <div id="chartset-densenet161-train" class="col-12 col-md-6">
+            <canvas id="chart-densenet161-train"></canvas>
+            <button class="btn btn-green btn-fill-vert-o" id="showOnlyGV100-densenet161-train">GV100</button>
+            <button class="btn btn-blue btn-fill-vert-o" id="showOnlyP5000-densenet161-train">P5000</button>
+            <button class="btn btn-red btn-fill-vert-o" id="resetGraph-densenet161-train">Reset</button>
+            <button class="btn btn-purple btn-fill-vert-o" id="legends-densenet161-train">Legends</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="slide" data-anchor="log1">
+      <h1>Log 1</h1>
+    </div>
+    <div class="slide" data-anchor="log2">
+      <h1>Log 2</h1>
+    </div>
+    <div class="slide" data-anchor="log3">
+      <h1>Log 3</h1>
+    </div>
+  </div>
+</div>
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
@@ -101,6 +106,89 @@
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
 
     <script>
+    var myFullpage = new fullpage('#fullpage', {
+    	//Navigation
+    	menu: '#menu',
+    	lockAnchors: false,
+    	anchors:['firstPage', 'secondPage'],
+    	navigation: true,
+    	navigationPosition: 'right',
+    	navigationTooltips: ['Charts', 'Logs'],
+    	showActiveTooltip: false,
+    	slidesNavigation: true,
+    	slidesNavPosition: 'bottom',
+
+    	//Scrolling
+    	css3: true,
+    	scrollingSpeed: 700,
+    	autoScrolling: true,
+    	fitToSection: true,
+    	fitToSectionDelay: 1000,
+    	scrollBar: false,
+    	easing: 'easeInOutCubic',
+    	easingcss3: 'ease',
+    	loopBottom: false,
+    	loopTop: false,
+    	loopHorizontal: true,
+    	continuousVertical: false,
+    	continuousHorizontal: false,
+    	scrollHorizontally: false,
+    	interlockedSlides: false,
+    	dragAndMove: false,
+    	offsetSections: false,
+    	resetSliders: false,
+    	fadingEffect: false,
+    	normalScrollElements: '#element1, .element2',
+    	scrollOverflow: false,
+    	scrollOverflowReset: false,
+    	scrollOverflowOptions: null,
+    	touchSensitivity: 15,
+    	normalScrollElementTouchThreshold: 5,
+    	bigSectionsDestination: null,
+
+    	//Accessibility
+    	keyboardScrolling: true,
+    	animateAnchor: true,
+    	recordHistory: true,
+
+    	//Design
+    	controlArrows: false,
+    	verticalCentered: true,
+    	sectionsColor : ['#F3F5FF', '#F3F5FF'],
+    	paddingTop: '1em',
+    	paddingBottom: '10px',
+    	fixedElements: '#header, .footer',
+    	responsiveWidth: 0,
+    	responsiveHeight: 0,
+    	responsiveSlides: false,
+    	parallax: false,
+    	parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
+
+    	//Custom selectors
+    	sectionSelector: '.section',
+    	slideSelector: '.slide',
+
+    	lazyLoading: true,
+
+    	//events
+    	onLeave: function(origin, destination, direction){},
+    	afterLoad: function(origin, destination, direction){},
+    	afterRender: function(){},
+    	afterResize: function(width, height){},
+    	afterResponsive: function(isResponsive){},
+    	afterSlideLoad: function(section, origin, destination, direction){},
+    	onSlideLeave: function(section, origin, destination, direction){}
+    });
+    $(document).ready(function() {
+      $('#fullpage').myFullpage({
+        //options here
+        autoScrolling:true,
+        scrollHorizontally: true
+      });
+
+      //methods
+      $.fn.fullpage.setAllowScrolling(false);
+    });
       var colorSet = {
         pytorch_fp32: 'rgb(172, 34, 41)',
         pytorch_fp16: 'rgb(224, 64, 72)',

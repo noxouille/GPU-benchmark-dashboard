@@ -71,7 +71,7 @@ var data_train = {
 };
 
 var config_resnet152_train = {
-  type: 'horizontalBar',
+  type: 'bar',
   data: data_train,
 	options: {
 		// Elements options apply to all of the options unless overridden in a dataset
@@ -83,13 +83,14 @@ var config_resnet152_train = {
 		},
 		responsive: true,
 		legend: {
-			position: 'right',
+			position: 'top',
+			display: false
 		},
 		tooltips: {
 			// 'point' for single data point,
 			// 'index' for all data points in a group,
 			// 'nearest' for single data point nearby.
-		    mode: 'nearest',
+		    mode: 'index',
 		    intersect: false
 		},
 		hover: {
@@ -100,7 +101,14 @@ var config_resnet152_train = {
 			display: true,
 			fontSize:20,
 			fontColor:'#666',
-			text: 'resnet152 train (images per sec)'
+			text: 'train'
+		},
+		scales: {
+			yAxes: [{
+				ticks: {
+					beginAtZero: true
+				}
+			}]
 		}
 	}
 };
@@ -170,5 +178,14 @@ $("#resetGraph-resnet152-train").click(function(){
 	config_resnet152_train.data.datasets[5].data[1] = caffe2081_resnet152_train["fp16"]["P5000"];
 	GV100visible_resnet152_train = true;
 	P5000visible_resnet152_train = true;
+	chart_resnet152_train.update();
+});
+
+$("#legends-resnet152-train").click(function(){
+	if (config_resnet152_train.options.legend.display == true) {
+		config_resnet152_train.options.legend.display = false;
+	} else {
+		config_resnet152_train.options.legend.display = true;
+	}
 	chart_resnet152_train.update();
 });
