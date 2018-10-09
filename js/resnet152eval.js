@@ -71,7 +71,7 @@ var data_eval = {
 };
 
 var config_resnet152_eval = {
-  type: 'horizontalBar',
+  type: 'bar',
   data: data_eval,
 	options: {
 		// Elements options apply to all of the options unless overridden in a dataset
@@ -101,7 +101,14 @@ var config_resnet152_eval = {
 			display: true,
 			fontSize:20,
 			fontColor:'#666',
-			text: 'resnet152 eval (images per sec)'
+			text: 'eval'
+		},
+		scales: {
+			yAxes: [{
+				ticks: {
+					beginAtZero: true
+				}
+			}]
 		}
 	}
 };

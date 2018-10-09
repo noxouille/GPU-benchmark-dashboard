@@ -71,7 +71,7 @@ var data_train = {
 };
 
 var config_vgg16_train = {
-  type: 'horizontalBar',
+  type: 'bar',
   data: data_train,
 	options: {
 		// Elements options apply to all of the options unless overridden in a dataset
@@ -102,6 +102,13 @@ var config_vgg16_train = {
 			fontSize:20,
 			fontColor:'#666',
 			text: 'train'
+		},
+		scales: {
+			yAxes: [{
+				ticks: {
+					beginAtZero: true
+				}
+			}]
 		}
 	}
 };

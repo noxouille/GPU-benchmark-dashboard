@@ -71,7 +71,7 @@ var data_eval = {
 };
 
 var config_vgg16_eval = {
-  type: 'horizontalBar',
+  type: 'bar',
   data: data_eval,
 	options: {
 		// Elements options apply to all of the options unless overridden in a dataset
@@ -102,6 +102,13 @@ var config_vgg16_eval = {
 			fontSize:20,
 			fontColor:'#666',
 			text: 'eval'
+		},
+		scales: {
+			yAxes: [{
+				ticks: {
+					beginAtZero: true
+				}
+			}]
 		}
 	}
 };
