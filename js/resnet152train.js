@@ -82,6 +82,7 @@ var config_resnet152_train = {
 			}
 		},
 		responsive: true,
+		maintainAspectRatio: false,
 		legend: {
 			position: 'top',
 			display: false
@@ -98,7 +99,7 @@ var config_resnet152_train = {
 		    intersect: false
 		},
 		title: {
-			display: true,
+			display: false,
 			fontSize:20,
 			fontColor:'#666',
 			text: 'train'
