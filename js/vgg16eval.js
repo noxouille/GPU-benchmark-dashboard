@@ -82,6 +82,7 @@ var config_vgg16_eval = {
 			}
 		},
 		responsive: true,
+		maintainAspectRatio: false,
 		legend: {
 			position: 'top',
 			display: false
@@ -98,7 +99,7 @@ var config_vgg16_eval = {
 		    intersect: false
 		},
 		title: {
-			display: true,
+			display: false,
 			fontSize:20,
 			fontColor:'#666',
 			text: 'eval'
