@@ -1,192 +1,61 @@
-// Put your data here
-var GPU = ['GV100', 'P5000'];
-
-var pytorch040_vgg16_train = {
-	'fp32': { 'GV100': 169, 'P5000': 89 },
-  'fp16': { 'GV100': 239, 'P5000': 101 }
-};
-
-var tf180_vgg16_train = {
-	'fp32': { 'GV100': 187, 'P5000': 91 },
-  'fp16': { 'GV100': 293, 'P5000': 105 }
-};
-
-var caffe2081_vgg16_train = {
-	'fp32': { 'GV100': 102, 'P5000': 69 },
-  'fp16': { 'GV100': 122, 'P5000': 78 }
-};
-
-var color = Chart.helpers.color;
-var data_train = {
-	labels: GPU,
-	datasets: [{
-		label: 'PyTorch 0.4.0 fp32',
-		backgroundColor: color(colorSet.pytorch_fp32).alpha(0.3).rgbString(),
-		borderColor: colorSet.pytorch_fp32,
-		data: [
-			pytorch040_vgg16_train["fp32"]["GV100"],
-			pytorch040_vgg16_train["fp32"]["P5000"]
-		]
-	}, {
-		label: 'PyTorch 0.4.0 fp16',
-		backgroundColor: color(colorSet.pytorch_fp16).alpha(0.3).rgbString(),
-		borderColor: colorSet.pytorch_fp16,
-		data: [
-			pytorch040_vgg16_train["fp16"]["GV100"],
-			pytorch040_vgg16_train["fp16"]["P5000"]
-		]
-	}, {
-		label: 'TensorFlow 1.8.0 fp32',
-		backgroundColor: color(colorSet.tf_fp32).alpha(0.3).rgbString(),
-		borderColor: colorSet.tf_fp32,
-		data: [
-			tf180_vgg16_train["fp32"]["GV100"],
-			tf180_vgg16_train["fp32"]["P5000"]
-		]
-	}, {
-		label: 'TensorFlow 1.8.0 fp16',
-		backgroundColor: color(colorSet.tf_fp16).alpha(0.3).rgbString(),
-		borderColor: colorSet.tf_fp16,
-		data: [
-			tf180_vgg16_train["fp16"]["GV100"],
-			tf180_vgg16_train["fp16"]["P5000"]
-		]
-	}, {
-		label: 'Caffe2 0.8.1 fp32',
-		backgroundColor: color(colorSet.caffe2_fp32).alpha(0.3).rgbString(),
-		borderColor: colorSet.caffe2_fp32,
-		data: [
-			caffe2081_vgg16_train["fp32"]["GV100"],
-			caffe2081_vgg16_train["fp32"]["P5000"]
-		]
-	}, {
-		label: 'Caffe2 0.8.1 fp16',
-		backgroundColor: color(colorSet.caffe2_fp16).alpha(0.3).rgbString(),
-		borderColor: colorSet.caffe2_fp16,
-		data: [
-			caffe2081_vgg16_train["fp16"]["GV100"],
-			caffe2081_vgg16_train["fp16"]["P5000"]
-		]
-	}]
-};
-
-var config_vgg16_train = {
-  type: 'bar',
-  data: data_train,
-	options: {
-		// Elements options apply to all of the options unless overridden in a dataset
-		// In this case, we are setting the border of each horizontal bar to be 2px wide
-		elements: {
-			rectangle: {
-				borderWidth: 2,
-			}
-		},
-		responsive: true,
-		maintainAspectRatio: false,
-		legend: {
-			position: 'top',
-			display: false
-		},
-		tooltips: {
-			// 'point' for single data point,
-			// 'index' for all data points in a group,
-			// 'nearest' for single data point nearby.
-		    mode: 'index',
-		    intersect: false
-		},
-		hover: {
-		    mode: 'index',
-		    intersect: false
-		},
-		title: {
-			display: false,
-			fontSize:20,
-			fontColor:'#666',
-			text: 'train'
-		},
-		scales: {
-			yAxes: [{
-				ticks: {
-					beginAtZero: true
-				}
-			}]
-		}
-	}
-};
-
-var chart_vgg16_train = new Chart($("#chart-vgg16-train"), config_vgg16_train);
-
-var GV100visible_vgg16_train = true;
-var P5000visible_vgg16_train = true;
-
-$("#showOnlyGV100-vgg16-train").click(function(){
-	if (P5000visible_vgg16_train === true) { // remove P5000 graph
-		config_vgg16_train.data.labels.pop();
-		config_vgg16_train.data.datasets.forEach(function(dataset){
-			dataset.data.pop();
-		});
-		P5000visible_vgg16_train = !P5000visible_vgg16_train;
-	}
-	if (GV100visible_vgg16_train === false)	{ // show gv100 graph
-		config_vgg16_train.data.labels[0] = "GV100";
-		config_vgg16_train.data.datasets[0].data[0] = pytorch040_vgg16_train["fp32"]["GV100"];
-		config_vgg16_train.data.datasets[1].data[0] = pytorch040_vgg16_train["fp16"]["GV100"];
-		config_vgg16_train.data.datasets[2].data[0] = tf180_vgg16_train["fp32"]["GV100"];
-		config_vgg16_train.data.datasets[3].data[0] = tf180_vgg16_train["fp16"]["GV100"];
-		config_vgg16_train.data.datasets[4].data[0] = caffe2081_vgg16_train["fp32"]["GV100"];
-		config_vgg16_train.data.datasets[5].data[0] = caffe2081_vgg16_train["fp16"]["GV100"];
-		GV100visible_vgg16_train = !GV100visible_vgg16_train;
-	}
-	chart_vgg16_train.update();
-});
-
-$("#showOnlyP5000-vgg16-train").click(function(){
-	if (GV100visible_vgg16_train === true) { // remove gv100 graph
-		config_vgg16_train.data.labels.splice(0, 1);
-		config_vgg16_train.data.datasets.forEach(function(dataset){
-			dataset.data.splice(0, 1);
-		});
-		GV100visible_vgg16_train = !GV100visible_vgg16_train;
-	}
-	if (P5000visible_vgg16_train === false) { // show P5000 graph
-		config_vgg16_train.data.labels[0] = "P5000";
-		config_vgg16_train.data.datasets[0].data[0] = pytorch040_vgg16_train["fp32"]["P5000"];
-		config_vgg16_train.data.datasets[1].data[0] = pytorch040_vgg16_train["fp16"]["P5000"];
-		config_vgg16_train.data.datasets[2].data[0] = tf180_vgg16_train["fp32"]["P5000"];
-		config_vgg16_train.data.datasets[3].data[0] = tf180_vgg16_train["fp16"]["P5000"];
-		config_vgg16_train.data.datasets[4].data[0] = caffe2081_vgg16_train["fp32"]["P5000"];
-		config_vgg16_train.data.datasets[5].data[0] = caffe2081_vgg16_train["fp16"]["P5000"];
-		P5000visible_vgg16_train = !P5000visible_vgg16_train;
-	}
-	chart_vgg16_train.update();
-});
-
-$("#resetGraph-vgg16-train").click(function(){
-	// TODO: Can we make this more efficient? especially for more datasets
-	config_vgg16_train.data.labels[0] = "GV100";
-	config_vgg16_train.data.datasets[0].data[0] = pytorch040_vgg16_train["fp32"]["GV100"];
-	config_vgg16_train.data.datasets[1].data[0] = pytorch040_vgg16_train["fp16"]["GV100"];
-	config_vgg16_train.data.datasets[2].data[0] = tf180_vgg16_train["fp32"]["GV100"];
-	config_vgg16_train.data.datasets[3].data[0] = tf180_vgg16_train["fp16"]["GV100"];
-	config_vgg16_train.data.datasets[4].data[0] = caffe2081_vgg16_train["fp32"]["GV100"];
-	config_vgg16_train.data.datasets[5].data[0] = caffe2081_vgg16_train["fp16"]["GV100"];
-	config_vgg16_train.data.labels[1] = "P5000";
-	config_vgg16_train.data.datasets[0].data[1] = pytorch040_vgg16_train["fp32"]["P5000"];
-	config_vgg16_train.data.datasets[1].data[1] = pytorch040_vgg16_train["fp16"]["P5000"];
-	config_vgg16_train.data.datasets[2].data[1] = tf180_vgg16_train["fp32"]["P5000"];
-	config_vgg16_train.data.datasets[3].data[1] = tf180_vgg16_train["fp16"]["P5000"];
-	config_vgg16_train.data.datasets[4].data[1] = caffe2081_vgg16_train["fp32"]["P5000"];
-	config_vgg16_train.data.datasets[5].data[1] = caffe2081_vgg16_train["fp16"]["P5000"];
-	GV100visible_vgg16_train = true;
-	P5000visible_vgg16_train = true;
-	chart_vgg16_train.update();
-});
-
-$("#legends-vgg16-train").click(function(){
-	if (config_vgg16_train.options.legend.display == true) {
-		config_vgg16_train.options.legend.display = false;
-	} else {
-		config_vgg16_train.options.legend.display = true;
-	}
-	chart_vgg16_train.update();
+Highcharts.chart('vgg16train', {
+  chart: {
+    backgroundColor: '#F3F5FF',
+    type: 'column'
+  },
+  title: {
+    text: 'VGG16 train'
+  },
+  subtitle: {
+    text: 'Source: https://github.com/noxouille/deep-learning-benchmark'
+  },
+  xAxis: {
+    categories: [
+      'GV100',
+      'P5000',
+      'Titan V',
+      '1080Ti',
+      'V100'
+    ],
+    crosshair: true
+  },
+  yAxis: {
+    min: 0,
+    title: {
+      text: 'images/s'
+    }
+  },
+  tooltip: {
+    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+      '<td style="padding:0"><b>{point.y:.0f} images/s</b></td></tr>',
+    footerFormat: '</table>',
+    shared: true,
+    useHTML: true
+  },
+  plotOptions: {
+    column: {
+      pointPadding: 0.2,
+      borderWidth: 0
+    }
+  },
+  series: [{
+    name: 'PyTorch fp32',
+    data: [169, 89, 147, 121, 191]
+  }, {
+    name: 'PyTorch fp16',
+    data: [239, 101, 224, 136, 272]
+  }, {
+    name: 'TensorFlow fp32',
+    data: [187, 91, 101, 121, 223]
+  }, {
+    name: 'TensorFlow fp16',
+    data: [293, 105, 563, 132, 323]
+  }, {
+    name: 'Caffe2 fp32',
+    data: [102, 69, 86, 100, null]
+  }, {
+    name: 'Caffe2 fp16',
+    data: [122, 78, 102, 116, null]
+  }]
 });
