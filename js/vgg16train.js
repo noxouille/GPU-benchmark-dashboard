@@ -50,7 +50,7 @@ Highcharts.chart('vgg16train', {
     data: [187, 91, 101, 121, 223]
   }, {
     name: 'TensorFlow fp16',
-    data: [293, 105, 563, 132, 323]
+    data: [293, 105, 165, 132, 323]
   }, {
     name: 'Caffe2 fp32',
     data: [102, 69, 86, 100, null]
